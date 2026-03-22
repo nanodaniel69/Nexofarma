@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexofarma | El nexo inteligente para la salud</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #28a745;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+        }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            line-height: 1.6;
+            background-color: var(--light); 
+            color: var(--dark); 
+        }
+        header { 
+            background: linear-gradient(135deg, var(--primary), #003366); 
+            color: white; 
+            padding: 80px 20px; 
+            text-align: center;
+        }
+        h1 { margin: 0; font-size: 3em; letter-spacing: -1px; }
+        .tagline { font-size: 1.25em; opacity: 0.9; max-width: 700px; margin: 20px auto; }
+        
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; text-align: center; }
+        
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px; 
+            margin-top: 40px; 
+        }
+        .card { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
+            transition: transform 0.3s ease;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: var(--primary); margin-top: 0; }
+        
+        .cta-section { background: white; padding: 60px 20px; border-top: 1px solid #eee; }
+        .btn { 
+            display: inline-block; 
+            background: var(--secondary); 
+            color: white; 
+            padding: 18px 35px; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            font-size: 1.1em;
+            transition: background 0.3s;
+        }
+        .btn:hover { background: #218838; }
+        
+        footer { padding: 40px; font-size: 0.9em; color: #888; text-align: center; }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2em; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Nexofarma</h1>
+        <p class="tagline">Digitalizamos la solidaridad: conectamos excedentes de medicamentos con quienes más lo necesitan.</p>
+    </header>
+
+    <div class="container">
+        <h2>Nuestra Propuesta de Valor</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Validación con IA</h3>
+                <p>Escaneo inteligente de envases (OCR) para garantizar la trazabilidad, lote y vencimiento de cada medicamento.</p>
+            </div>
+            <div class="card">
+                <h3>Geocercanía</h3>
+                <p>Algoritmos de ubicación que conectan al donante con el CAPS o el solicitante más cercano, minimizando costos logísticos.</p>
+            </div>
+            <div class="card">
+                <h3>Seguridad y Ética</h3>
+                <p>Validación estricta mediante recetas digitales y declaraciones juradas para un ecosistema de salud transparente.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="cta-section">
+        <div class="container" style="padding: 0;">
+            <h2>Impulsemos la salud en La Rioja</h2>
+            <p>Estamos buscando aliados estratégicos e inversores de impacto para escalar esta solución.</p>
+            <a href="mailto:hola@nexofarma.online" class="btn">Contactar al equipo</a>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Nexofarma.online • Próximamente en Argentina.
+    </footer>
+
+</body>
+  </html>
+
