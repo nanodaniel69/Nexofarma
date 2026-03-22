@@ -69,10 +69,13 @@
         }
         .btn:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 20px 40px -10px var(--primary); }
 
-        /* --- DASHBOARD IMPACTO --- */
-        .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin: 40px 0; }
+        /* --- DASHBOARD IMPACTO & MOCKUP --- */
+        .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin: 50px 0; }
         .stat-card { background: rgba(30, 41, 59, 0.3); padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); }
         .stat-card h2 { font-size: 3.5rem; margin-bottom: 10px; font-weight: 800; }
+        
+        .mockup-container { width: 100%; max-width: 320px; margin: 60px auto 0; position: relative; }
+        .app-img { width: 100%; border-radius: 45px; border: 10px solid #1E293B; box-shadow: 0 0 50px rgba(0,0,0,0.8); }
 
         /* --- CARDS & VIDEO --- */
         .story-card { 
@@ -107,6 +110,7 @@
             section { padding: 60px 20px; }
             .hero-logo { width: 110px; }
             .impact-grid { grid-template-columns: 1fr; }
+            .mockup-container { max-width: 260px; }
         }
     </style>
 </head>
@@ -123,13 +127,14 @@
             <p style="font-size: 1.3rem; color: var(--text-dim); max-width: 750px; margin: 0 auto 40px;">
                 Convertimos el excedente de medicamentos en <b>alivio inmediato</b>. La primera red de economía circular farmacéutica en Chilecito.
             </p>
-            <a href="#solucion" class="btn">DESCUBRIR LA RED</a>
+            <a href="#impacto" class="btn">DESCUBRIR LA RED</a>
         </div>
     </section>
 
-    <section id="impacto" style="min-height: auto; background: rgba(15, 23, 42, 0.4);">
+    <section id="impacto" style="background: rgba(15, 23, 42, 0.4);">
         <div class="container">
             <h2 style="margin-bottom: 50px; font-size: 2.5rem;">Impacto Real en la Comunidad</h2>
+            
             <div class="impact-grid">
                 <div class="stat-card">
                     <h2 style="color: var(--primary);">+500</h2>
@@ -144,6 +149,11 @@
                     <p style="color: var(--text-dim); font-weight: 600;">Pesos Ahorrados</p>
                 </div>
             </div>
+
+            <div class="mockup-container">
+                <img src="mockup.png" alt="NexoFarma App" class="app-img">
+            </div>
+
         </div>
     </section>
 
