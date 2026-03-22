@@ -38,14 +38,13 @@
             flex-direction: column; 
             align-items: center; 
             justify-content: center; 
-            padding: 100px 20px; 
+            padding: 80px 20px; 
             position: relative;
         }
 
         .container { max-width: 1100px; width: 100%; margin: 0 auto; text-align: center; }
 
-        /* --- LOGO Y TÍTULO --- */
-        .hero-logo { width: 150px; margin-bottom: 25px; filter: drop-shadow(0 0 15px rgba(45, 212, 191, 0.4)); }
+        .hero-logo { width: 180px; margin-bottom: 30px; filter: drop-shadow(0 0 20px rgba(45, 212, 191, 0.3)); }
         .nexo-titulo { font-size: clamp(2.8rem, 8vw, 4.8rem); font-weight: 800; margin-bottom: 20px; letter-spacing: -2px; }
         .span-nexo { color: #FFFFFF; }
         .span-farma {
@@ -55,7 +54,6 @@
             background-clip: text;
         }
 
-        /* --- BOTONES --- */
         .btn {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: var(--bg-dark);
@@ -71,48 +69,32 @@
         }
         .btn:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 20px 40px -10px var(--primary); }
 
-        /* --- DASHBOARD IMPACTO --- */
         .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin: 40px 0; }
         .stat-card { background: rgba(30, 41, 59, 0.3); padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); }
         .stat-card h2 { font-size: 3.5rem; margin-bottom: 10px; font-weight: 800; }
         
-        /* --- MOCKUP --- */
-        .mockup-container { width: 100%; max-width: 320px; margin: 0 auto; position: relative; }
+        .mockup-container { width: 100%; max-width: 320px; margin: 0 auto; }
         .app-img { width: 100%; border-radius: 45px; border: 10px solid #1E293B; box-shadow: 0 0 50px rgba(0,0,0,0.8); }
 
-        /* --- STORY CARD --- */
-        .story-card { 
-            background: rgba(30, 41, 59, 0.5); 
-            backdrop-filter: blur(12px); 
-            padding: 40px; 
-            border-radius: 32px; 
-            border: 1px solid rgba(255,255,255,0.1); 
-            text-align: left; 
-        }
-        
-        /* --- VIDEO FULL WIDTH --- */
         .video-full-width {
             width: 100vw;
             margin-left: calc(-50vw + 50%);
             margin-right: calc(-50vw + 50%);
             aspect-ratio: 21/9;
-            background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), #1E293B;
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), #1E293B;
             display: flex;
             align-items: center;
             justify-content: center;
             border-top: 1px solid rgba(255,255,255,0.05);
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            margin-top: 80px;
+            margin-top: 60px;
         }
 
-        /* --- FORMULARIO Y STATUS --- */
         .form-glass { background: #1E293B; padding: 50px; border-radius: 32px; width: 100%; max-width: 550px; margin: 0 auto; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
         input, textarea { width: 100%; padding: 18px; margin-bottom: 20px; border-radius: 14px; border: 1px solid #334155; background: #0F172A; color: #fff; font-family: inherit; }
-        #form-status { text-align: center; }
 
         @media (max-width: 768px) {
             section { padding: 60px 20px; }
-            .impact-grid { grid-template-columns: 1fr; }
             .video-full-width { aspect-ratio: 16/9; }
         }
     </style>
@@ -123,32 +105,32 @@
 
     <section id="hero">
         <div class="container">
-            <img src="logo.png" alt="Nexo Vital" class="hero-logo">
+            <img src="logo.png" alt="NexoFarma Logo" class="hero-logo">
             <h1 class="nexo-titulo">
                 <span class="span-nexo">Nexo</span><span class="span-farma">Farma</span>
             </h1>
-            <p style="font-size: 1.3rem; color: var(--text-dim); max-width: 750px; margin: 0 auto 40px;">
+            <p style="font-size: 1.2rem; color: var(--text-dim); max-width: 750px; margin: 0 auto 40px;">
                 Convertimos el excedente de medicamentos en <b>alivio inmediato</b>. La primera red de economía circular farmacéutica en <b>Argentina</b>.
             </p>
-            <a href="#impacto" class="btn">DESCUBRIR LA RED</a>
+            <a href="#contacto" class="btn">SABER MÁS</a>
         </div>
     </section>
 
     <section id="impacto" style="min-height: auto; background: rgba(15, 23, 42, 0.4);">
         <div class="container">
-            <h2 style="margin-bottom: 50px; font-size: 2.5rem;">Impacto Real y Escalamiento Federal</h2>
+            <h2 style="margin-bottom: 50px; font-size: 2.2rem;">Impacto Real en Argentina</h2>
             <div class="impact-grid">
                 <div class="stat-card">
                     <h2 style="color: var(--primary);">+500</h2>
-                    <p style="color: var(--text-dim); font-weight: 600;">Usuarios Activos</p>
+                    <p style="color: var(--text-dim);">Usuarios Activos</p>
                 </div>
                 <div class="stat-card">
                     <h2 style="color: var(--secondary);">1.2k</h2>
-                    <p style="color: var(--text-dim); font-weight: 600;">Remedios Recuperados</p>
+                    <p style="color: var(--text-dim);">Medicamentos Recuperados</p>
                 </div>
                 <div class="stat-card">
                     <h2 style="color: var(--accent);">$4.5M</h2>
-                    <p style="color: var(--text-dim); font-weight: 600;">Impacto Económico</p>
+                    <p style="color: var(--text-dim);">Ahorro Proyectado</p>
                 </div>
             </div>
         </div>
@@ -156,29 +138,27 @@
 
     <section id="solucion">
         <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 60px; align-items: center;">
-                <div style="text-align: left;">
-                    <h2 style="font-size: 2.8rem; margin-bottom: 25px; line-height: 1.1;">Tecnología para la confianza</h2>
-                    <p style="color: var(--text-dim); margin-bottom: 30px; font-size: 1.1rem;">
-                        Nuestra arquitectura está diseñada para escalar. Implementamos validación inteligente y trazabilidad para conectar botiquines de todo el país con quienes más lo necesitan.
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 60px; align-items: center; text-align: left;">
+                <div>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 25px;">Tecnología para la confianza</h2>
+                    <p style="color: var(--text-dim); font-size: 1.1rem; margin-bottom: 20px;">
+                        Implementamos validación inteligente y trazabilidad para conectar botiquines de todo el país con quienes más lo necesitan de forma segura.
                     </p>
-                    <div class="story-card" style="border-left: 4px solid var(--primary); background: rgba(30, 41, 59, 0.3);">
-                        <p style="font-style: italic; color: var(--text-main);">"Chilecito es solo el comienzo. Estamos construyendo el nexo sanitario más grande del país."</p>
-                        <p style="margin-top: 15px; font-weight: 800; color: var(--primary);">— Visión NexoFarma</p>
+                    <div style="padding: 25px; background: rgba(30, 41, 59, 0.3); border-radius: 20px; border-left: 4px solid var(--primary);">
+                        <p style="font-style: italic;">"Estamos construyendo el nexo sanitario más grande del país."</p>
                     </div>
                 </div>
-                
                 <div class="mockup-container">
-                    <img src="mockup.png" alt="NexoFarma App" class="app-img">
+                    <img src="mockup.png" alt="App Nexofarma" class="app-img">
                 </div>
             </div>
         </div>
 
         <div class="video-full-width">
             <div style="text-align: center;">
-                <div style="font-size: 4rem; margin-bottom: 10px;">🎥</div>
-                <p style="color: var(--primary); font-weight: 800; letter-spacing: 4px; font-size: 1.2rem;">EXPANSIÓN NACIONAL 2026</p>
-                <p style="color: var(--text-dim);">Mira cómo estamos transformando la salud en Argentina</p>
+                <div style="font-size: 3rem; margin-bottom: 10px;">🎥</div>
+                <p style="color: var(--primary); font-weight: 800; letter-spacing: 4px;">VIDEO EXPLICATIVO NACIONAL</p>
+                <p style="color: var(--text-dim);">Disponible próximamente</p>
             </div>
         </div>
     </section>
@@ -187,26 +167,25 @@
         <div class="container">
             <div class="form-glass" id="form-container">
                 <h2 style="margin-bottom: 15px;">Invertí en Impacto Social</h2>
-                <p style="color: var(--text-dim); margin-bottom: 35px;" id="form-instruction">Estamos buscando socios estratégicos para escalar la red a nivel federal. Recibe nuestro Pitch Deck técnico.</p>
+                <p style="color: var(--text-dim); margin-bottom: 35px;" id="form-instruction">Recibe nuestro Pitch Deck técnico para inversores.</p>
                 
-                <form id="contact-form" action="https://formspree.io/f/tu-id" method="POST">
-                    <input type="text" name="name" placeholder="Nombre o Fondo de Inversión" required>
-                    <input type="tel" name="phone" placeholder="WhatsApp / Contacto" required>
+                <form id="contact-form" action="https://formspree.io/f/xbdzvdwq" method="POST">
+                    <input type="text" name="name" placeholder="Nombre completo" required>
+                    <input type="tel" name="phone" placeholder="WhatsApp / Teléfono" required>
                     <textarea name="message" rows="4" placeholder="Contanos tu interés en el proyecto"></textarea>
                     <button type="submit" id="submit-btn" class="btn" style="width: 100%;">SOLICITAR PITCH DECK</button>
                 </form>
 
                 <div id="form-status" style="display:none; padding: 20px;">
                     <div style="font-size: 3rem; margin-bottom: 20px;">✅</div>
-                    <h3 style="color: var(--primary); margin-bottom: 10px;">¡Solicitud Recibida!</h3>
-                    <p style="color: var(--text-dim);">Nuestro equipo técnico se pondrá en contacto contigo para enviarte el Pitch Deck exclusivo.</p>
+                    <h3 style="color: var(--primary);">¡Solicitud Recibida!</h3>
+                    <p style="color: var(--text-dim); margin-top: 10px;">Nuestro equipo técnico te contactará pronto.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <script>
-        /* --- LÓGICA DEL CANVAS --- */
         const canvas = document.getElementById('nexoCanvas');
         const ctx = canvas.getContext('2d');
         let atoms = [];
@@ -219,7 +198,7 @@
             for (let i = 0; i < count; i++) {
                 atoms.push({
                     x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5,
+                    vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
                     radius: Math.random() * 2 + 1
                 });
             }
@@ -227,8 +206,6 @@
 
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#0F172A';
-            ctx.fillRect(0,0, canvas.width, canvas.height);
             atoms.forEach((atom, i) => {
                 atom.x += atom.vx; atom.y += atom.vy;
                 if (atom.x < 0 || atom.x > canvas.width) atom.vx *= -1;
@@ -238,15 +215,14 @@
                 for (let j = i + 1; j < atoms.length; j++) {
                     const dx = atom.x - atoms[j].x, dy = atom.y - atoms[j].y, dist = Math.sqrt(dx*dx + dy*dy);
                     if (dist < 150) {
-                        ctx.strokeStyle = `rgba(56, 189, 248, ${0.4 - dist/150})`;
-                        ctx.lineWidth = 0.8; ctx.beginPath(); ctx.moveTo(atom.x, atom.y); ctx.lineTo(atoms[j].x, atoms[j].y); ctx.stroke();
+                        ctx.strokeStyle = `rgba(56, 189, 248, ${0.3 - dist/150})`;
+                        ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(atom.x, atom.y); ctx.lineTo(atoms[j].x, atoms[j].y); ctx.stroke();
                     }
                 }
             });
             requestAnimationFrame(draw);
         }
 
-        /* --- LÓGICA DEL ENDPOINT (AJAX) --- */
         const form = document.getElementById("contact-form");
         const status = document.getElementById("form-status");
         const instruction = document.getElementById("form-instruction");
@@ -256,22 +232,19 @@
             event.preventDefault();
             submitBtn.innerText = "ENVIANDO...";
             submitBtn.disabled = true;
-            
             const data = new FormData(event.target);
             fetch(event.target.action, {
-                method: 'POST',
-                body: data,
-                headers: { 'Accept': 'application/json' }
+                method: 'POST', body: data, headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
                     form.style.display = "none";
                     instruction.style.display = "none";
                     status.style.display = "block";
                 } else {
-                    alert("Hubo un error. Por favor, intenta de nuevo.");
+                    alert("Error en el envío. Verificá la configuración.");
                 }
             }).catch(() => {
-                alert("Error de conexión. Intenta más tarde.");
+                alert("Error de conexión.");
             }).finally(() => {
                 submitBtn.innerText = "SOLICITAR PITCH DECK";
                 submitBtn.disabled = false;
