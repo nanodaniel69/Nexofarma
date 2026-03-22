@@ -42,11 +42,33 @@
 
         .container { max-width: 1100px; width: 100%; margin: 0 auto; text-align: center; }
 
-        /* --- HERO --- */
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; margin-bottom: 20px; background: linear-gradient(to right, #fff, var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 700px; margin: 0 auto 40px; }
-        .hero-logo { width: 150px; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(45, 212, 191, 0.5)); }
+        /* --- HERO & TITULO PREMIUM --- */
+        .hero-logo { 
+            width: 150px; 
+            margin-bottom: 20px; 
+            filter: drop-shadow(0 0 15px rgba(45, 212, 191, 0.4)); 
+        }
 
+        .nexo-titulo-premium {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1.5px;
+        }
+
+        .span-nexo { color: #FFFFFF; }
+        
+        .span-farma {
+            background: linear-gradient(135deg, var(--secondary), #E0F2FE);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.3));
+        }
+
+        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 700px; margin: 0 auto 40px; }
+
+        /* --- BOTONES --- */
         .btn {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: var(--bg-dark);
@@ -60,23 +82,27 @@
         }
         .btn:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -10px var(--primary); }
 
-        /* --- APP PREVIEW --- */
+        /* --- MOCKUP & CARDS --- */
         .mockup-container { position: relative; margin-top: 50px; }
         .app-img { width: 100%; max-width: 320px; border-radius: 45px; border: 10px solid #1E293B; box-shadow: 0 0 50px rgba(0,0,0,0.8); }
 
-        /* --- CARDS & STORY --- */
-        .story-card { background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(12px); padding: 50px; border-radius: 32px; border: 1px solid rgba(255,255,255,0.1); text-align: left; }
+        .story-card { 
+            background: rgba(30, 41, 59, 0.5); 
+            backdrop-filter: blur(12px); 
+            padding: 40px; 
+            border-radius: 32px; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            text-align: left; 
+        }
         .story-card h2 { color: var(--primary); margin-bottom: 20px; font-size: 2rem; }
-        .story-card p { font-size: 1.1rem; color: var(--text-dim); }
 
-        /* --- FORM --- */
+        /* --- FORMULARIO --- */
         .form-glass { background: #1E293B; padding: 40px; border-radius: 32px; width: 100%; max-width: 500px; margin: 0 auto; }
-        input, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 12px; border: 1px solid #334155; background: #0F172A; color: #fff; font-size: 1rem; }
+        input, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 12px; border: 1px solid #334155; background: #0F172A; color: #fff; }
         
         @media (max-width: 768px) {
-            section { padding: 40px 15px; }
-            .hero h1 { font-size: 2.8rem; }
             .hero-logo { width: 120px; }
+            .nexo-titulo-premium { font-size: 2.8rem; }
         }
     </style>
 </head>
@@ -87,7 +113,9 @@
     <section class="hero">
         <div class="container">
             <img src="logo.png" alt="Nexo Vital" class="hero-logo">
-            <h1>NexoFarma</h1>
+            <h1 class="nexo-titulo-premium">
+                <span class="span-nexo">Nexo</span><span class="span-farma">Farma</span>
+            </h1>
             <p>Convertimos el excedente de medicamentos en <b>alivio inmediato</b>. La primera red de economía circular farmacéutica impulsada por la comunidad y validada por tecnología.</p>
             <a href="#solucion" class="btn">SABER MÁS</a>
         </div>
@@ -100,26 +128,14 @@
                 <img src="mockup.png" alt="NexoFarma App" class="app-img">
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 60px;">
-                <div class="story-card" style="padding: 30px;">
+                <div class="story-card">
                     <h4 style="color:var(--primary)">Validación OCR</h4>
                     <p>Nuestra IA escanea el envase para asegurar que el lote y vencimiento sean correctos antes de publicar.</p>
                 </div>
-                <div class="story-card" style="padding: 30px;">
+                <div class="story-card">
                     <h4 style="color:var(--secondary)">Geolocalización</h4>
                     <p>Filtramos por cercanía real. El nexo ocurre a pocas cuadras de tu casa, optimizando tiempos.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="mision">
-        <div class="container">
-            <div class="story-card">
-                <h2>Nuestra Misión</h2>
-                <p>
-                    NexoFarma nace de una realidad que nos toca a todos en <b>Chilecito</b>: medicamentos de alto costo venciendo en un botiquín mientras un vecino no puede completar su tratamiento. <br><br>
-                    No somos solo una app, somos una <b>comunidad consciente</b>. Queremos que cada vecino se convierta en un eslabón de esta red, donde la solidaridad sea el motor que digitaliza la salud local.
-                </p>
             </div>
         </div>
     </section>
