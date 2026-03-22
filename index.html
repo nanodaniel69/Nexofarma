@@ -10,6 +10,7 @@
             --bg-dark: #0F172A;
             --primary: #2DD4BF;
             --secondary: #38BDF8;
+            --accent: #A5B4FC;
             --text-main: #FFFFFF;
             --text-dim: #94A3B8;
         }
@@ -21,6 +22,7 @@
             background-color: var(--bg-dark); 
             color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         #nexoCanvas {
@@ -36,37 +38,22 @@
             flex-direction: column; 
             align-items: center; 
             justify-content: center; 
-            padding: 60px 20px; 
+            padding: 100px 20px; 
             position: relative;
         }
 
         .container { max-width: 1100px; width: 100%; margin: 0 auto; text-align: center; }
 
-        /* --- HERO & TITULO PREMIUM --- */
-        .hero-logo { 
-            width: 150px; 
-            margin-bottom: 20px; 
-            filter: drop-shadow(0 0 15px rgba(45, 212, 191, 0.4)); 
-        }
-
-        .nexo-titulo-premium {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 800;
-            margin-bottom: 20px;
-            letter-spacing: -1.5px;
-        }
-
+        /* --- TITULO PREMIUM --- */
+        .hero-logo { width: 150px; margin-bottom: 25px; filter: drop-shadow(0 0 15px rgba(45, 212, 191, 0.4)); }
+        .nexo-titulo { font-size: clamp(2.8rem, 8vw, 4.8rem); font-weight: 800; margin-bottom: 20px; letter-spacing: -2px; }
         .span-nexo { color: #FFFFFF; }
-        
         .span-farma {
             background: linear-gradient(135deg, var(--secondary), #E0F2FE);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.3));
         }
-
-        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 700px; margin: 0 auto 40px; }
 
         /* --- BOTONES --- */
         .btn {
@@ -76,33 +63,50 @@
             border-radius: 16px;
             font-weight: 800;
             text-decoration: none;
-            transition: 0.3s;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: inline-block;
             box-shadow: 0 10px 30px -10px var(--primary);
         }
-        .btn:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -10px var(--primary); }
+        .btn:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 20px 40px -10px var(--primary); }
 
-        /* --- MOCKUP & CARDS --- */
-        .mockup-container { position: relative; margin-top: 50px; }
-        .app-img { width: 100%; max-width: 320px; border-radius: 45px; border: 10px solid #1E293B; box-shadow: 0 0 50px rgba(0,0,0,0.8); }
+        /* --- DASHBOARD IMPACTO --- */
+        .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin: 40px 0; }
+        .stat-card { background: rgba(30, 41, 59, 0.3); padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); }
+        .stat-card h2 { font-size: 3.5rem; margin-bottom: 10px; font-weight: 800; }
 
+        /* --- CARDS & VIDEO --- */
         .story-card { 
             background: rgba(30, 41, 59, 0.5); 
             backdrop-filter: blur(12px); 
-            padding: 40px; 
+            padding: 45px; 
             border-radius: 32px; 
             border: 1px solid rgba(255,255,255,0.1); 
             text-align: left; 
+            transition: 0.3s;
         }
-        .story-card h2 { color: var(--primary); margin-bottom: 20px; font-size: 2rem; }
+        .story-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        
+        .video-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #1E293B;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed rgba(255,255,255,0.1);
+            overflow: hidden;
+            position: relative;
+        }
 
         /* --- FORMULARIO --- */
-        .form-glass { background: #1E293B; padding: 40px; border-radius: 32px; width: 100%; max-width: 500px; margin: 0 auto; }
-        input, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 12px; border: 1px solid #334155; background: #0F172A; color: #fff; }
-        
+        .form-glass { background: #1E293B; padding: 50px; border-radius: 32px; width: 100%; max-width: 550px; margin: 0 auto; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+        input, textarea { width: 100%; padding: 18px; margin-bottom: 20px; border-radius: 14px; border: 1px solid #334155; background: #0F172A; color: #fff; font-family: inherit; }
+
         @media (max-width: 768px) {
-            .hero-logo { width: 120px; }
-            .nexo-titulo-premium { font-size: 2.8rem; }
+            section { padding: 60px 20px; }
+            .hero-logo { width: 110px; }
+            .impact-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -110,46 +114,75 @@
 
     <canvas id="nexoCanvas"></canvas>
 
-    <section class="hero">
+    <section id="hero">
         <div class="container">
             <img src="logo.png" alt="Nexo Vital" class="hero-logo">
-            <h1 class="nexo-titulo-premium">
+            <h1 class="nexo-titulo">
                 <span class="span-nexo">Nexo</span><span class="span-farma">Farma</span>
             </h1>
-            <p>Convertimos el excedente de medicamentos en <b>alivio inmediato</b>. La primera red de economía circular farmacéutica impulsada por la comunidad y validada por tecnología.</p>
-            <a href="#solucion" class="btn">SABER MÁS</a>
+            <p style="font-size: 1.3rem; color: var(--text-dim); max-width: 750px; margin: 0 auto 40px;">
+                Convertimos el excedente de medicamentos en <b>alivio inmediato</b>. La primera red de economía circular farmacéutica en Chilecito.
+            </p>
+            <a href="#solucion" class="btn">DESCUBRIR LA RED</a>
+        </div>
+    </section>
+
+    <section id="impacto" style="min-height: auto; background: rgba(15, 23, 42, 0.4);">
+        <div class="container">
+            <h2 style="margin-bottom: 50px; font-size: 2.5rem;">Impacto Real en la Comunidad</h2>
+            <div class="impact-grid">
+                <div class="stat-card">
+                    <h2 style="color: var(--primary);">+500</h2>
+                    <p style="color: var(--text-dim); font-weight: 600;">Descargas Activas</p>
+                </div>
+                <div class="stat-card">
+                    <h2 style="color: var(--secondary);">1.2k</h2>
+                    <p style="color: var(--text-dim); font-weight: 600;">Remedios Recuperados</p>
+                </div>
+                <div class="stat-card">
+                    <h2 style="color: var(--accent);">$4.5M</h2>
+                    <p style="color: var(--text-dim); font-weight: 600;">Pesos Ahorrados</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="solucion">
         <div class="container">
-            <h2 style="font-size: 2.5rem; margin-bottom: 40px;">Tecnología para la confianza</h2>
-            <div class="mockup-container">
-                <img src="mockup.png" alt="NexoFarma App" class="app-img">
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 60px;">
-                <div class="story-card">
-                    <h4 style="color:var(--primary)">Validación OCR</h4>
-                    <p>Nuestra IA escanea el envase para asegurar que el lote y vencimiento sean correctos antes de publicar.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 60px; align-items: center;">
+                <div style="text-align: left;">
+                    <h2 style="font-size: 2.8rem; margin-bottom: 25px; line-height: 1.1;">Tecnología para la confianza</h2>
+                    <p style="color: var(--text-dim); margin-bottom: 30px; font-size: 1.1rem;">
+                        No es solo solidaridad, es trazabilidad. Nuestra plataforma asegura que cada medicamento sea seguro, esté vigente y llegue a quien realmente lo necesita.
+                    </p>
+                    <div class="story-card" style="border-left: 4px solid var(--primary); background: rgba(30, 41, 59, 0.3);">
+                        <p style="font-style: italic; color: var(--text-main);">"Como vecino, me da tranquilidad saber que lo que dono llega directo a manos de alguien de mi barrio."</p>
+                        <p style="margin-top: 15px; font-weight: 800; color: var(--primary);">— Testimonio Real</p>
+                    </div>
                 </div>
-                <div class="story-card">
-                    <h4 style="color:var(--secondary)">Geolocalización</h4>
-                    <p>Filtramos por cercanía real. El nexo ocurre a pocas cuadras de tu casa, optimizando tiempos.</p>
+                <div class="video-container">
+                    <div style="text-align: center; padding: 20px;">
+                        <div style="font-size: 3rem; margin-bottom: 10px;">🎥</div>
+                        <p style="color: var(--primary); font-weight: 800; letter-spacing: 2px;">VÍDEO EXPLICATIVO</p>
+                        <p style="color: var(--text-dim);">Disponible en 48hs</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="contacto">
-        <div class="form-glass">
-            <h2 style="margin-bottom: 10px;">Impulsa el Proyecto</h2>
-            <p style="color: var(--text-dim); margin-bottom: 30px;">Dejanos tus datos para recibir el Pitch Deck técnico.</p>
-            <form action="https://formspree.io/f/tu-id" method="POST">
-                <input type="text" name="name" placeholder="Tu Nombre" required>
-                <input type="tel" name="phone" placeholder="WhatsApp de contacto" required>
-                <textarea name="message" rows="4" placeholder="¿Cómo te gustaría colaborar?"></textarea>
-                <button type="submit" class="btn" style="width: 100%; border: none; cursor: pointer;">QUIERO SER PARTE</button>
-            </form>
+        <div class="container">
+            <div class="form-glass">
+                <h2 style="margin-bottom: 15px;">Impulsa NexoFarma</h2>
+                <p style="color: var(--text-dim); margin-bottom: 35px;">Sé parte de la revolución sanitaria en Chilecito. Recibe nuestro Pitch Deck hoy.</p>
+                <form action="https://formspree.io/f/tu-id" method="POST">
+                    <input type="text" name="name" placeholder="Nombre completo" required>
+                    <input type="tel" name="phone" placeholder="WhatsApp de contacto" required>
+                    <textarea name="message" rows="4" placeholder="¿Cómo te gustaría colaborar con el proyecto?"></textarea>
+                    <button type="submit" class="btn" style="width: 100%; border: none; cursor: pointer; font-size: 1.1rem;">QUIERO SER PARTE</button>
+                </form>
+            </div>
         </div>
     </section>
 
@@ -162,12 +195,13 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             atoms = [];
-            for (let i = 0; i < 70; i++) {
+            const count = window.innerWidth < 768 ? 40 : 80;
+            for (let i = 0; i < count; i++) {
                 atoms.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.6,
-                    vy: (Math.random() - 0.5) * 0.6,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
                     radius: Math.random() * 2 + 1
                 });
             }
@@ -194,8 +228,8 @@
                     const dy = atom.y - atoms[j].y;
                     const dist = Math.sqrt(dx*dx + dy*dy);
                     if (dist < 150) {
-                        ctx.strokeStyle = `rgba(56, 189, 248, ${1 - dist/150})`;
-                        ctx.lineWidth = 0.6;
+                        ctx.strokeStyle = `rgba(56, 189, 248, ${0.4 - dist/150})`;
+                        ctx.lineWidth = 0.8;
                         ctx.beginPath();
                         ctx.moveTo(atom.x, atom.y);
                         ctx.lineTo(atoms[j].x, atoms[j].y);
@@ -211,4 +245,5 @@
         draw();
     </script>
 </body>
-</html>
+    </html>
+                        
