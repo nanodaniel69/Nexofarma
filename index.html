@@ -40,11 +40,12 @@
             position: relative;
         }
 
-        .container { max-width: 1100px; width: 100%; margin: 0 auto; }
+        .container { max-width: 1100px; width: 100%; margin: 0 auto; text-align: center; }
 
         /* --- HERO --- */
         .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; margin-bottom: 20px; background: linear-gradient(to right, #fff, var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 700px; margin-bottom: 40px; }
+        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 700px; margin: 0 auto 40px; }
+        .hero-logo { width: 150px; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(45, 212, 191, 0.5)); }
 
         .btn {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -63,19 +64,19 @@
         .mockup-container { position: relative; margin-top: 50px; }
         .app-img { width: 100%; max-width: 320px; border-radius: 45px; border: 10px solid #1E293B; box-shadow: 0 0 50px rgba(0,0,0,0.8); }
 
-        /* --- STORY --- */
+        /* --- CARDS & STORY --- */
         .story-card { background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(12px); padding: 50px; border-radius: 32px; border: 1px solid rgba(255,255,255,0.1); text-align: left; }
         .story-card h2 { color: var(--primary); margin-bottom: 20px; font-size: 2rem; }
         .story-card p { font-size: 1.1rem; color: var(--text-dim); }
-        .story-card b { color: #fff; }
 
         /* --- FORM --- */
-        .form-glass { background: #1E293B; padding: 40px; border-radius: 32px; width: 100%; max-width: 500px; }
+        .form-glass { background: #1E293B; padding: 40px; border-radius: 32px; width: 100%; max-width: 500px; margin: 0 auto; }
         input, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 12px; border: 1px solid #334155; background: #0F172A; color: #fff; font-size: 1rem; }
         
         @media (max-width: 768px) {
             section { padding: 40px 15px; }
             .hero h1 { font-size: 2.8rem; }
+            .hero-logo { width: 120px; }
         }
     </style>
 </head>
@@ -85,6 +86,7 @@
 
     <section class="hero">
         <div class="container">
+            <img src="logo.png" alt="Nexo Vital" class="hero-logo">
             <h1>NexoFarma</h1>
             <p>Convertimos el excedente de medicamentos en <b>alivio inmediato</b>. La primera red de economía circular farmacéutica impulsada por la comunidad y validada por tecnología.</p>
             <a href="#solucion" class="btn">SABER MÁS</a>
@@ -163,7 +165,6 @@
             atoms.forEach((atom, i) => {
                 atom.x += atom.vx;
                 atom.y += atom.vy;
-
                 if (atom.x < 0 || atom.x > canvas.width) atom.vx *= -1;
                 if (atom.y < 0 || atom.y > canvas.height) atom.vy *= -1;
 
@@ -176,7 +177,6 @@
                     const dx = atom.x - atoms[j].x;
                     const dy = atom.y - atoms[j].y;
                     const dist = Math.sqrt(dx*dx + dy*dy);
-
                     if (dist < 150) {
                         ctx.strokeStyle = `rgba(56, 189, 248, ${1 - dist/150})`;
                         ctx.lineWidth = 0.6;
@@ -195,5 +195,4 @@
         draw();
     </script>
 </body>
-                    </html>
-                    
+</html>
