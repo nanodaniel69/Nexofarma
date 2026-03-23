@@ -147,11 +147,21 @@
     }
     .hero-title {
       font-family: 'Syne', sans-serif;
-      font-size: clamp(3rem, 9vw, 6rem);
+      font-size: clamp(2.2rem, 7vw, 6rem);
       font-weight: 800;
-      line-height: 1.0;
-      letter-spacing: -3px;
+      line-height: 1.1;
+      letter-spacing: -1px;
       margin-bottom: 28px;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      padding: 0 8px;
+    }
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: clamp(2rem, 11vw, 3rem);
+        letter-spacing: -0.5px;
+        line-height: 1.15;
+      }
     }
     .hero-title .t-white { color: var(--white); }
     .hero-title .t-grad {
@@ -198,7 +208,7 @@
       font-size: 0.9rem;
       text-decoration: none;
       border: 1px solid var(--border);
-            transition: border-color 0.25s, background 0.25s;
+      transition: border-color 0.25s, background 0.25s;
     }
     .btn-ghost:hover { border-color: var(--teal); background: rgba(45,212,191,0.05); }
 
@@ -554,6 +564,46 @@
     }
     footer a { color: var(--teal); text-decoration: none; }
 
+    /* ── RESPONSIVE TIPOGRAFÍA GLOBAL ── */
+    @media (max-width: 480px) {
+      section { padding: 80px 18px; }
+      .wrap { padding: 0 4px; }
+
+      /* Todos los h2 con Syne en mobile */
+      .solucion-text h2,
+      .video-header h2,
+      .validacion-intro h2,
+      .contacto-header h2,
+      #problema h2 {
+        font-size: clamp(1.6rem, 8vw, 2.2rem);
+        letter-spacing: -0.5px;
+        line-height: 1.2;
+      }
+
+      /* Cards de problema: una por fila, sin desborde */
+      .problema-grid { grid-template-columns: 1fr; }
+      .card-stat { font-size: 2.4rem; }
+
+      /* Sección solución: stack vertical */
+      .solucion-layout { grid-template-columns: 1fr; gap: 40px; }
+      .app-img { max-width: 200px; }
+
+      /* Grillas de validación */
+      .val-grid { grid-template-columns: 1fr; }
+      .testimonios-grid { grid-template-columns: 1fr; }
+
+      /* Botones hero full-width en mobile */
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-ghost { width: 100%; max-width: 320px; text-align: center; }
+
+      /* Form */
+      .form-glass { padding: 28px 18px; }
+
+      /* quote divider */
+      .divider-quote { padding: 28px 20px; }
+      .divider-quote p { font-size: 1rem; }
+    }
+
     /* ── ANIMACIONES ENTRADA ── */
     .reveal {
       opacity: 0;
@@ -577,7 +627,8 @@
     .hero-content > *:nth-child(4) { animation-delay: 0.55s; }
     .hero-content > *:nth-child(5) { animation-delay: 0.7s; }
   </style>
-</head>
+<!-- PARTE 1: líneas 1-629 (DOCTYPE + HEAD completo con todo el CSS) -->
+  </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLB8744K"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -827,7 +878,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 NexoFarma · Argentina · <a href="/pitch">Ver Pitch</a> · Todos los derechos reservados.</p>
+  <p>© 2026 NexoFarma · Argentina · Todos los derechos reservados.</p>
 </footer>
 
 <script>
@@ -938,4 +989,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 </body>
-</html>
+  </html>
+  
