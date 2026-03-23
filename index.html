@@ -76,18 +76,24 @@
         .mockup-container { width: 100%; max-width: 320px; margin: 0 auto; }
         .app-img { width: 100%; border-radius: 45px; border: 10px solid #1E293B; box-shadow: 0 0 50px rgba(0,0,0,0.8); }
 
+        .video-wrapper {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 50px rgba(45, 212, 191, 0.15);
+        }
+
         .video-full-width {
             width: 100vw;
             margin-left: calc(-50vw + 50%);
             margin-right: calc(-50vw + 50%);
-            aspect-ratio: 21/9;
-            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), #1E293B;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8));
+            padding: 60px 20px;
             border-top: 1px solid rgba(255,255,255,0.05);
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            margin-top: 60px;
         }
 
         .form-glass { background: #1E293B; padding: 50px; border-radius: 32px; width: 100%; max-width: 550px; margin: 0 auto; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
@@ -95,7 +101,7 @@
 
         @media (max-width: 768px) {
             section { padding: 60px 20px; }
-            .video-full-width { aspect-ratio: 16/9; }
+            .form-glass { padding: 30px; }
         }
     </style>
 </head>
@@ -155,10 +161,14 @@
         </div>
 
         <div class="video-full-width">
-            <div style="text-align: center;">
-                <div style="font-size: 3rem; margin-bottom: 10px;">🎥</div>
-                <p style="color: var(--primary); font-weight: 800; letter-spacing: 4px;">VIDEO EXPLICATIVO NACIONAL</p>
-                <p style="color: var(--text-dim);">Disponible próximamente</p>
+            <div class="container">
+                <p style="color: var(--primary); font-weight: 800; letter-spacing: 4px; margin-bottom: 20px;">VIDEO INSTITUCIONAL</p>
+                <div class="video-wrapper">
+                    <video width="100%" controls poster="mockup.png">
+                        <source src="NexoFarma Institucional - Vertical_720p_caption.mp4" type="video/mp4">
+                        Tu navegador no soporta el video.
+                    </video>
+                </div>
             </div>
         </div>
     </section>
@@ -167,19 +177,23 @@
         <div class="container">
             <div class="form-glass" id="form-container">
                 <h2 style="margin-bottom: 15px;">Invertí en Impacto Social</h2>
-                <p style="color: var(--text-dim); margin-bottom: 35px;" id="form-instruction">Recibe nuestro Pitch Deck técnico para inversores.</p>
+                <p style="color: var(--text-dim); margin-bottom: 35px;" id="form-instruction">Solicitá el Pitch Deck técnico para inversores.</p>
                 
                 <form id="contact-form" action="https://formspree.io/f/xbdzvdwq" method="POST">
-                    <input type="text" name="name" placeholder="Nombre completo" required>
+                    <input type="text" name="name" placeholder="Nombre completo / Fondo" required>
+                    <input type="email" name="email" placeholder="Correo electrónico corporativo" required>
                     <input type="tel" name="phone" placeholder="WhatsApp / Teléfono" required>
-                    <textarea name="message" rows="4" placeholder="Contanos tu interés en el proyecto"></textarea>
+                    <textarea name="message" rows="4" placeholder="Contanos tu interés estratégico en el proyecto"></textarea>
+                    
+                    <input type="hidden" name="_subject" value="Nueva Solicitud de Inversor - NexoFarma">
+                    
                     <button type="submit" id="submit-btn" class="btn" style="width: 100%;">SOLICITAR PITCH DECK</button>
                 </form>
 
                 <div id="form-status" style="display:none; padding: 20px;">
                     <div style="font-size: 3rem; margin-bottom: 20px;">✅</div>
                     <h3 style="color: var(--primary);">¡Solicitud Recibida!</h3>
-                    <p style="color: var(--text-dim); margin-top: 10px;">Nuestro equipo técnico te contactará pronto.</p>
+                    <p style="color: var(--text-dim); margin-top: 10px;">En breve recibirás el material técnico en tu correo.</p>
                 </div>
             </div>
         </div>
