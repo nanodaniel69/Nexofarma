@@ -105,6 +105,9 @@
                 <input type="text" id="inv-name" placeholder="Nombre completo del inversor">
             </div>
             <div class="input-group">
+                <input type="text" id="inv-dni" placeholder="DNI / CUIT del inversor">
+            </div>
+            <div class="input-group">
                 <input type="email" id="inv-email" placeholder="Email corporativo">
             </div>
 
@@ -140,10 +143,11 @@
 
         btnSubmit.addEventListener('click', async () => {
             const nombre = document.getElementById('inv-name').value;
+            const dni = document.getElementById('inv-dni').value; // CAMBIO: Capturar DNI
             const email = document.getElementById('inv-email').value;
 
-            if (!nombre || !email || signaturePad.isEmpty()) {
-                alert("Por favor complete su nombre, email y firme el documento.");
+            if (!nombre || !dni || !email || signaturePad.isEmpty()) {
+                alert("Por favor complete su nombre, DNI, email y firme el documento.");
                 return;
             }
 
@@ -151,14 +155,14 @@
             btnSubmit.innerText = "GENERANDO ACCESO...";
 
             try {
-                // CAMBIO CLAVE: URL Absoluta con HTTPS
                 const response = await fetch('https://nexofarma.alwaysdata.net/signature/generar-nda', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     mode: 'cors',
                     body: JSON.stringify({
                         nombre: nombre,
-                        email: email, // El servidor espera 'email'
+                        dni: dni, // CAMBIO: Enviar DNI al servidor
+                        email: email,
                         firma: signaturePad.toDataURL()
                     })
                 });
