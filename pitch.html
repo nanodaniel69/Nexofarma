@@ -3,157 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NexoFarma | Investor One-Pager</title>
+    <title>NexoFarma | Data & Health Equity</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0B0F1A;
-            --card: #161B2B;
-            --primary: #2DD4BF;
-            --secondary: #38BDF8;
-            --accent: #F43F5E;
-            --white: #FFFFFF;
-            --gray: #94A3B8;
+            --bg: #0B0F1A; --card: #161B2B; --primary: #2DD4BF; --secondary: #38BDF8; --accent: #F43F5E; --white: #FFFFFF; --gray: #94A3B8;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background: var(--bg); 
-            color: var(--white); 
-            line-height: 1.6;
-            padding-bottom: 100px;
-        }
-
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--white); line-height: 1.6; padding-bottom: 100px; }
         .container { width: 92%; max-width: 500px; margin: 0 auto; padding-top: 40px; }
-
-        .badge { 
-            display: inline-block; 
-            background: rgba(45, 212, 191, 0.1); 
-            color: var(--primary); 
-            padding: 6px 14px; 
-            border-radius: 20px; 
-            font-size: 0.7rem; 
-            font-weight: 800; 
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        h1 { font-size: 2.3rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; letter-spacing: -1px; }
-        .gradient-text {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .card { 
-            background: var(--card); 
-            padding: 24px; 
-            border-radius: 24px; 
-            border: 1px solid rgba(255,255,255,0.05); 
-            margin-bottom: 20px;
-        }
-
-        .card h2 { font-size: 1.2rem; margin-bottom: 12px; color: var(--primary); display: flex; align-items: center; gap: 8px; }
-
-        /* Metrics */
+        .badge { display: inline-block; background: rgba(45, 212, 191, 0.1); color: var(--primary); padding: 6px 14px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        h1 { font-size: 2.1rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+        .gradient-text { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card { background: var(--card); padding: 24px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px; }
+        .card h2 { font-size: 1.1rem; margin-bottom: 12px; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
         .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
         .stat-item { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 18px; text-align: center; border: 1px solid rgba(255,255,255,0.03); }
-        .stat-item span { display: block; font-size: 1.6rem; font-weight: 800; color: var(--white); }
-        .stat-item label { font-size: 0.65rem; color: var(--gray); text-transform: uppercase; font-weight: 600; }
-
-        /* Story Section */
-        .story-card {
-            background: linear-gradient(145deg, #1e293b, #161b2b);
-            border-left: 4px solid var(--secondary);
-        }
-        .quote { font-style: italic; color: var(--white); font-size: 0.95rem; margin-bottom: 15px; display: block; }
-
-        /* Lists */
+        .stat-item span { display: block; font-size: 1.5rem; font-weight: 800; color: var(--white); }
+        .stat-item label { font-size: 0.6rem; color: var(--gray); text-transform: uppercase; }
+        .story-card { background: linear-gradient(145deg, #1e293b, #161b2b); border-left: 4px solid var(--secondary); }
         .list { list-style: none; font-size: 0.9rem; color: var(--gray); }
         .list li { margin-bottom: 10px; display: flex; align-items: flex-start; }
-        .list li::before { content: "→"; color: var(--secondary); margin-right: 8px; font-weight: 800; }
-
-        /* CTA */
-        .cta-container {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(to top, var(--bg) 80%, transparent);
-            z-index: 100;
-        }
-        .btn-main {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--bg);
-            text-align: center;
-            padding: 18px;
-            border-radius: 18px;
-            font-weight: 800;
-            text-decoration: none;
-            display: block;
-            box-shadow: 0 10px 30px rgba(45, 212, 191, 0.2);
-            font-size: 1rem;
-        }
-
-        @media (max-width: 380px) {
-            h1 { font-size: 1.9rem; }
-        }
+        .list li::before { content: "●"; color: var(--secondary); margin-right: 8px; font-size: 0.8rem; }
+        .cta-container { position: fixed; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(to top, var(--bg) 80%, transparent); z-index: 100; }
+        .btn-main { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: var(--bg); text-align: center; padding: 18px; border-radius: 18px; font-weight: 800; text-decoration: none; display: block; box-shadow: 0 10px 30px rgba(45, 212, 191, 0.2); }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <span class="badge">Material Confidencial</span>
-        <h1>Inversión en <span class="gradient-text">Impacto Social</span> y Escala Sanitaria</h1>
+        <span class="badge">Propuesta de Inversión Pre-Seed</span>
+        <h1>NexoFarma: Del Desperdicio al <span class="gradient-text">Dato Estratégico</span></h1>
         
-        <p style="color: var(--gray); margin-bottom: 25px;">
-            NexoFarma es la primera red de economía circular farmacéutica en Argentina, diseñada para capturar y redistribuir el excedente de medicamentos mediante tecnología de trazabilidad avanzada.
+        <p style="color: var(--gray); margin-bottom: 25px; font-size: 0.95rem;">
+            En Argentina, el 12% de los medicamentos terminan en la basura. <strong>Buscamos socios estratégicos para construir la primera infraestructura de trazabilidad de excedentes farmacéuticos.</strong>
         </p>
 
         <div class="stats-grid">
             <div class="stat-item">
-                <span>$12B</span>
-                <label>Mercado Latam</label>
+                <span>12%</span>
+                <label>Desperdicio Anual</label>
             </div>
             <div class="stat-item">
-                <span>+1.2k</span>
-                <label>Unidades Traccionadas</label>
+                <span>P2P Data</span>
+                <label>Modelo de Negocio</label>
             </div>
+        </div>
+
+        <div class="card">
+            <h2>Nuestra Tesis: Valor del Dato</h2>
+            <ul class="list">
+                <li><strong>Mapeo de Demanda:</strong> Identificar fallas de stock por geolocalización.</li>
+                <li><strong>Infraestructura Inteligente:</strong> Validación mediante OCR y trazabilidad digital.</li>
+                <li><strong>Escalabilidad P2P:</strong> Sin costos de almacenamiento físico. Puro software.</li>
+            </ul>
         </div>
 
         <div class="card story-card">
             <h2>El Fundador</h2>
-            <span class="quote">"Después de 10 años optimizando cadenas de suministro, entendí que la ineficiencia logística en salud cuesta vidas."</span>
-            <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 12px;">
-                Como <strong>Técnico Agrónomo</strong> con más de <strong>10 años de experiencia en gestión de compras e inventarios</strong>, he dedicado mi carrera a la eficiencia operativa.
+            <p style="font-size: 0.85rem; color: var(--white); margin-bottom: 10px; font-style: italic;">
+                "Tras 10 años en logística, entiendo que la ineficiencia no es falta de producto, es falta de datos."
             </p>
-            <p style="font-size: 0.9rem; color: var(--gray);">
-                Tras ver la dificultad de familiares para acceder a tratamientos mientras los depósitos descartaban stock por falta de trazabilidad, apliqué mis habilidades en <strong>diseño de software</strong> para crear esta solución.
+            <p style="font-size: 0.85rem; color: var(--gray);">
+                Especialista en <strong>gestión de suministros y arquitectura de sistemas</strong>, liderando la visión técnica para transformar el sector salud.
             </p>
         </div>
 
-        <div class="card">
-            <h2>Roadmap de Tracción</h2>
-            <ul class="list">
-                <li><strong>MVP Operativo:</strong> Red de +500 usuarios activos validando la demanda.</li>
-                <li><strong>Infraestructura:</strong> Stack tecnológico escalable (PHP/MySQL) listo para despliegue regional.</li>
-                <li><strong>Eficiencia:</strong> Proyectamos reducir los costos operativos de salud en un 40%.</li>
+        <div class="card" style="border: 1px dashed var(--secondary); background: transparent; margin-bottom: 100px;">
+            <h2>Roadmap de Construcción 2026</h2>
+            <ul class="list" style="font-size: 0.8rem;">
+                <li><strong>Q2:</strong> Desarrollo del Core API y Módulo de Validación Biométrica.</li>
+                <li><strong>Q3:</strong> Lanzamiento de Beta Controlada e Integración de Recetas.</li>
+                <li><strong>Q4:</strong> Estructuración de la Base de Datos para Analytics B2B.</li>
             </ul>
-        </div>
-
-        <div class="card" style="border: 1px dashed var(--secondary); background: transparent;">
-            <h2>Tesis de Inversión</h2>
-            <p style="font-size: 0.9rem; color: var(--gray);">
-                Buscamos socios estratégicos para escalar la automatización de la cadena de suministro solidaria y liderar la trazabilidad de medicamentos en el país.
-            </p>
         </div>
     </div>
 
     <div class="cta-container">
-        <a href="https://wa.me/543804521960" class="btn-main">AGENDAR REUNIÓN ESTRATÉGICA</a>
+        <a href="https://wa.me/543804521960" class="btn-main">SOLICITAR PITCH DECK TÉCNICO</a>
     </div>
 
 </body>
