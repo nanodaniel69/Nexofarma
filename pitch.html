@@ -19,29 +19,26 @@
         .gradient-text { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
         .card { background: var(--card); padding: 24px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px; }
-        .card h2 { font-size: 1.1rem; margin-bottom: 18px; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
+        .card h2 { font-size: 1rem; margin-bottom: 18px; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Metrics */
         .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
         .stat-item { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 18px; text-align: center; border: 1px solid rgba(255,255,255,0.03); }
-        .stat-item span { display: block; font-size: 1.5rem; font-weight: 800; color: var(--white); }
+        .stat-item span { display: block; font-size: 1.4rem; font-weight: 800; color: var(--white); }
         .stat-item label { font-size: 0.6rem; color: var(--gray); text-transform: uppercase; }
 
-        /* Lista con Corrección de Alineación (Grid) */
-        .list { list-style: none; font-size: 0.9rem; color: var(--gray); }
+        .list { list-style: none; font-size: 0.85rem; color: var(--gray); }
         .list li { 
             margin-bottom: 12px; 
             display: grid; 
-            grid-template-columns: 18px 115px 1fr; /* Columna fija para el título y el icono */
+            grid-template-columns: 18px 1fr;
             align-items: start;
-            gap: 4px;
+            gap: 8px;
         }
-        .list li::before { content: "●"; color: var(--secondary); font-size: 0.7rem; padding-top: 2px; }
+        .list li::before { content: "→"; color: var(--secondary); font-weight: 800; }
         .list li strong { color: var(--white); font-weight: 600; }
 
         .story-card { background: linear-gradient(145deg, #1e293b, #161b2b); border-left: 4px solid var(--secondary); }
         
-        /* CTA */
         .cta-container { position: fixed; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(to top, var(--bg) 80%, transparent); z-index: 100; }
         .btn-main { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: var(--bg); text-align: center; padding: 18px; border-radius: 18px; font-weight: 800; text-decoration: none; display: block; box-shadow: 0 10px 30px rgba(45, 212, 191, 0.2); }
     </style>
@@ -49,55 +46,65 @@
 <body>
 
     <div class="container">
-        <span class="badge">Propuesta Pre-Seed 2026</span>
-        <h1>NexoFarma: Del Desperdicio al <span class="gradient-text">Dato Estratégico</span></h1>
+        <span class="badge">Investor Deck · Pre-Seed 2026</span>
+        <h1>NexoFarma: Infraestructura de <span class="gradient-text">Datos en Salud</span></h1>
         
-        <p style="color: var(--gray); margin-bottom: 25px; font-size: 0.95rem;">
-            En Argentina, el 12% de los medicamentos terminan en la basura. <strong>Buscamos socios para construir la primera infraestructura de trazabilidad de excedentes.</strong>
+        <p style="color: var(--gray); margin-bottom: 25px; font-size: 0.95rem; text-align: justify;">
+            Resolvemos la ineficiencia del 12% de desperdicio farmacéutico en Argentina mediante una red de trazabilidad P2P que convierte excedentes en <b>activos de información estratégica</b>.
         </p>
 
         <div class="stats-grid">
             <div class="stat-item">
-                <span>12%</span>
-                <label>Desperdicio Anual</label>
+                <span>< 24hs</span>
+                <label>Validación Orgánica</label>
             </div>
             <div class="stat-item">
-                <span>P2P Data</span>
-                <label>Modelo de Negocio</label>
+                <span>P2P / B2B</span>
+                <label>Modelo de Ingresos</label>
             </div>
         </div>
 
         <div class="card">
-            <h2>Nuestra Tesis: Valor del Dato</h2>
+            <h2>Ciclo de Economía Circular</h2>
             <ul class="list">
-                <li><strong>Mapeo:</strong> <span>Identificar fallas de stock por geolocalización.</span></li>
-                <li><strong>Tecnología:</strong> <span>Validación mediante OCR y trazabilidad digital.</span></li>
-                <li><strong>Escalabilidad:</strong> <span>Sin costos de almacenamiento. Puro software.</span></li>
+                <li><strong>Captación:</strong> Identificación de excedentes en botiquines domésticos y farmacias.</li>
+                <li><strong>Validación:</strong> Protocolo OCR para trazabilidad de lotes y vencimientos.</li>
+                <li><strong>Estructuración:</strong> Conversión del flujo físico en datos geo-localizados.</li>
+                <li><strong>Monetización:</strong> Venta de Analytics a Laboratorios y el Estado.</li>
+            </ul>
+        </div>
+
+        <div class="card" style="border-color: rgba(56, 189, 248, 0.2);">
+            <h2>Clientes B2B & ROI</h2>
+            <ul class="list">
+                <li><strong>Laboratorios:</strong> Inteligencia de mercado y mapeo de fallas de stock real.</li>
+                <li><strong>Farmacéuticas:</strong> Optimización de reposición y cumplimiento normativo.</li>
+                <li><strong>Estado/CAPS:</strong> Reducción drástica de gasto en distribución ineficiente.</li>
             </ul>
         </div>
 
         <div class="card story-card">
-            <h2>El Fundador</h2>
+            <h2>Dominio del Dominio</h2>
             <p style="font-size: 0.85rem; color: var(--white); margin-bottom: 10px; font-style: italic;">
-                "Tras 10 años en logística, entiendo que la ineficiencia no es falta de producto, es falta de datos."
+                "La ineficiencia no es falta de producto, es falta de datos."
             </p>
-            <p style="font-size: 0.85rem; color: var(--gray);">
-                Especialista en <strong>gestión de suministros y arquitectura de sistemas</strong>, liderando la visión técnica de NexoFarma.
+            <p style="font-size: 0.85rem; color: var(--gray); text-align: justify;">
+                Fundado por <b>Daniel Vargas</b>, con 10 años de experiencia en logística y gestión de suministros, diseñando la visión técnica detrás de la red.
             </p>
         </div>
 
         <div class="card" style="border: 1px dashed var(--secondary); background: transparent; margin-bottom: 100px;">
-            <h2>Roadmap 2026</h2>
+            <h2>Hoja de Ruta de Inversión</h2>
             <ul class="list" style="font-size: 0.8rem;">
-                <li><strong>Q2:</strong> <span>Desarrollo del Core API y Validación Biométrica.</span></li>
-                <li><strong>Q3:</strong> <span>Lanzamiento de Beta e Integración de Recetas.</span></li>
-                <li><strong>Q4:</strong> <span>Estructuración de Datos para Analytics B2B.</span></li>
+                <li><strong>Q2:</strong> Desarrollo del Core API y motor de validación OCR.</li>
+                <li><strong>Q3:</strong> Beta cerrada con farmacias y mapeo de trazabilidad.</li>
+                <li><strong>Q4:</strong> Dashboard de Analytics B2B para primeros contratos piloto.</li>
             </ul>
         </div>
     </div>
 
     <div class="cta-container">
-        <a href="https://wa.me/543804521960" class="btn-main">SOLICITAR PITCH DECK TÉCNICO</a>
+        <a href="https://wa.me/543804521960" class="btn-main">CONTACTAR POR WHATSAPP</a>
     </div>
 
 </body>
