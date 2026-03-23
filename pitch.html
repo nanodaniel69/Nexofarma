@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NexoFarma | Investor One-Pager</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
     <style>
         :root {
             --bg: #0B0F1A; --card: #161B2B; --primary: #2DD4BF; --secondary: #38BDF8; --accent: #F43F5E; --white: #FFFFFF; --gray: #94A3B8;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--white); line-height: 1.6; padding-bottom: 120px; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--white); line-height: 1.6; padding-bottom: 150px; }
         .container { width: 92%; max-width: 500px; margin: 0 auto; padding-top: 40px; }
         
         .badge { display: inline-block; background: rgba(45, 212, 191, 0.1); color: var(--primary); padding: 6px 14px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
@@ -26,36 +27,26 @@
         .stat-item span { display: block; font-size: 1.4rem; font-weight: 800; color: var(--white); }
         .stat-item label { font-size: 0.6rem; color: var(--gray); text-transform: uppercase; }
 
-        /* NUEVA LOGICA DE LISTAS: Adiós al grid rígido */
         .list { list-style: none; font-size: 0.9rem; color: var(--gray); }
-        .list li { 
-            margin-bottom: 18px; 
-            position: relative;
-            padding-left: 25px; /* Espacio para la flecha */
-            text-align: left;
-        }
-        .list li::before { 
-            content: "→"; 
-            position: absolute;
-            left: 0;
-            color: var(--secondary); 
-            font-weight: 800; 
-        }
-        .list li strong { 
-            color: var(--white); 
-            font-weight: 700;
-            display: inline; /* Mantiene el título en la misma línea que la descripción */
-            margin-right: 5px;
-        }
-        .list li span {
-            display: inline;
-            line-height: 1.5;
-        }
+        .list li { margin-bottom: 18px; position: relative; padding-left: 25px; text-align: left; }
+        .list li::before { content: "→"; position: absolute; left: 0; color: var(--secondary); font-weight: 800; }
+        .list li strong { color: var(--white); font-weight: 700; display: inline; margin-right: 5px; }
+        .list li span { display: inline; line-height: 1.5; }
 
         .story-card { background: linear-gradient(145deg, #1e293b, #161b2b); border-left: 4px solid var(--secondary); }
         
+        /* ESTILOS DEL NDA */
+        .nda-card { background: rgba(45, 212, 191, 0.03); border: 1px solid rgba(45, 212, 191, 0.2); }
+        .nda-scroll { height: 100px; overflow-y: auto; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 12px; font-size: 0.75rem; color: var(--gray); margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05); }
+        .input-group { margin-bottom: 12px; }
+        .input-group input { width: 100%; background: #0B0F1A; border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 10px; color: white; font-size: 0.9rem; outline: none; }
+        .input-group input:focus { border-color: var(--secondary); }
+        canvas#signature-pad { background: #FFFFFF; border-radius: 12px; width: 100%; height: 180px; touch-action: none; cursor: crosshair; }
+        .btn-clear { background: transparent; border: none; color: var(--accent); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; cursor: pointer; margin-top: 8px; display: block; }
+
         .cta-container { position: fixed; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(to top, var(--bg) 80%, transparent); z-index: 100; }
-        .btn-main { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: var(--bg); text-align: center; padding: 18px; border-radius: 18px; font-weight: 800; text-decoration: none; display: block; box-shadow: 0 10px 30px rgba(45, 212, 191, 0.2); }
+        .btn-main { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: var(--bg); text-align: center; padding: 18px; border-radius: 18px; font-weight: 800; text-decoration: none; display: block; box-shadow: 0 10px 30px rgba(45, 212, 191, 0.2); width: 100%; border: none; cursor: pointer; }
+        .btn-main:disabled { opacity: 0.5; cursor: not-allowed; }
     </style>
 </head>
 <body>
@@ -89,38 +80,103 @@
             </ul>
         </div>
 
-        <div class="card" style="border-color: rgba(56, 189, 248, 0.2);">
-            <h2>Clientes B2B & ROI</h2>
-            <ul class="list">
-                <li><strong>Laboratorios:</strong><span>Inteligencia de mercado y mapeo de fallas de stock real.</span></li>
-                <li><strong>Farmacéuticas:</strong><span>Optimización de reposición y cumplimiento normativo.</span></li>
-                <li><strong>Estado/CAPS:</strong><span>Reducción drástica de gasto en distribución ineficiente.</span></li>
-            </ul>
-        </div>
-
         <div class="card story-card">
             <h2>Dominio del Dominio</h2>
             <p style="font-size: 0.85rem; color: var(--white); margin-bottom: 10px; font-style: italic;">
                 "La ineficiencia no es falta de producto, es falta de datos."
             </p>
             <p style="font-size: 0.85rem; color: var(--gray);">
-                Fundado por <b>Daniel Vargas</b>, con 10 años de experiencia en logística y gestión de suministros, diseñando la visión técnica detrás de la red.
+                Fundado por <b>Daniel Vargas</b>, con 10 años de experiencia en logística y gestión de suministros, diseñando la visión técnica de NexoFarma.
             </p>
         </div>
 
-        <div class="card" style="border: 1px dashed var(--secondary); background: transparent; margin-bottom: 100px;">
-            <h2>Hoja de Ruta de Inversión</h2>
-            <ul class="list" style="font-size: 0.85rem;">
-                <li><strong>Q2:</strong><span>Desarrollo del Core API y motor de validación OCR.</span></li>
-                <li><strong>Q3:</strong><span>Beta cerrada con farmacias y mapeo de trazabilidad.</span></li>
-                <li><strong>Q4:</strong><span>Dashboard de Analytics B2B para primeros contratos piloto.</span></li>
-            </ul>
+        <div class="card nda-card">
+            <h2>Acceso al Data Room</h2>
+            <p style="font-size: 0.8rem; color: var(--gray); margin-bottom: 15px;">Para acceder al stack técnico y proyecciones, firme el acuerdo de confidencialidad:</p>
+            
+            <div class="nda-scroll">
+                <strong>1. OBJETO:</strong> Acceso a información confidencial técnica de NexoFarma.<br>
+                <strong>2. CONFIDENCIALIDAD:</strong> Prohibición de divulgar modelos OCR y trazabilidad P2P.<br>
+                <strong>3. PROPIEDAD INTELECTUAL:</strong> Toda la IP pertenece exclusivamente a NexoFarma.<br>
+                <strong>4. PLAZO:</strong> Vigencia de 24 meses.<br>
+                <strong>5. JURISDICCIÓN:</strong> Tribunales de La Rioja, Argentina.
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="inv-name" placeholder="Nombre completo del inversor">
+            </div>
+            <div class="input-group">
+                <input type="email" id="inv-email" placeholder="Email corporativo">
+            </div>
+
+            <p style="font-size: 0.65rem; color: var(--secondary); margin-bottom: 8px; text-transform: uppercase; font-weight: 800;">Firme en el recuadro blanco:</p>
+            <canvas id="signature-pad"></canvas>
+            <button class="btn-clear" id="clear">Limpiar Firma</button>
         </div>
+
+        <div style="height: 50px;"></div>
     </div>
 
     <div class="cta-container">
-        <a href="https://wa.me/543804521960" class="btn-main">CONTACTAR POR WHATSAPP</a>
+        <button id="btn-submit" class="btn-main">FIRMAR Y SOLICITAR PITCH TÉCNICO</button>
     </div>
 
+    <script>
+        const canvas = document.getElementById('signature-pad');
+        const signaturePad = new SignaturePad(canvas);
+        const btnSubmit = document.getElementById('btn-submit');
+        const btnClear = document.getElementById('clear');
+
+        // Ajustar canvas al ancho del contenedor
+        function resizeCanvas() {
+            const ratio = Math.max(window.devicePixelRatio || 1, 1);
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = canvas.offsetHeight * ratio;
+            canvas.getContext("2d").scale(ratio, ratio);
+            signaturePad.clear();
+        }
+        window.onresize = resizeCanvas;
+        resizeCanvas();
+
+        btnClear.addEventListener('click', () => signaturePad.clear());
+
+        btnSubmit.addEventListener('click', async () => {
+            const nombre = document.getElementById('inv-name').value;
+            const email = document.getElementById('inv-email').value;
+
+            if (!nombre || !email || signaturePad.isEmpty()) {
+                alert("Por favor complete su nombre, email y firme el documento.");
+                return;
+            }
+
+            btnSubmit.disabled = true;
+            btnSubmit.innerText = "GENERANDO ACCESO...";
+
+            try {
+                const response = await fetch('/signature/generar-nda', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        nombre: nombre,
+                        email: email,
+                        firma: signaturePad.toDataURL()
+                    })
+                });
+
+                if (response.ok) {
+                    alert("¡NDA Firmado con éxito! Recibirás la documentación técnica en tu email.");
+                    btnSubmit.innerText = "SOLICITUD ENVIADA";
+                } else {
+                    throw new Error();
+                }
+            } catch (err) {
+                alert("Error al procesar la firma. Por favor intente de nuevo.");
+                btnSubmit.disabled = false;
+                btnSubmit.innerText = "FIRMAR Y SOLICITAR PITCH TÉCNICO";
+            }
+        });
+    </script>
+
 </body>
-</html>
+                          </html>
+                          
