@@ -179,13 +179,11 @@
                 <h2 style="margin-bottom: 15px;">Invertí en Impacto Social</h2>
                 <p style="color: var(--text-dim); margin-bottom: 35px;" id="form-instruction">Solicitá el Pitch Deck técnico para inversores.</p>
                 
-                <form id="contact-form" action="https://formspree.io/f/xbdzvdwq" method="POST">
+                <form id="contact-form" action="https://nexofarma.alwaysdata.net/email/procesar_lead.php" method="POST">
                     <input type="text" name="name" placeholder="Nombre completo / Fondo" required>
                     <input type="email" name="email" placeholder="Correo electrónico corporativo" required>
                     <input type="tel" name="phone" placeholder="WhatsApp / Teléfono" required>
                     <textarea name="message" rows="4" placeholder="Contanos tu interés estratégico en el proyecto"></textarea>
-                    
-                    <input type="hidden" name="_subject" value="Nueva Solicitud de Inversor - NexoFarma">
                     
                     <button type="submit" id="submit-btn" class="btn" style="width: 100%;">SOLICITAR PITCH DECK</button>
                 </form>
@@ -246,20 +244,28 @@
             event.preventDefault();
             submitBtn.innerText = "ENVIANDO...";
             submitBtn.disabled = true;
+
+            // Captura de datos nativa para PHP
             const data = new FormData(event.target);
+
             fetch(event.target.action, {
-                method: 'POST', body: data, headers: { 'Accept': 'application/json' }
-            }).then(response => {
+                method: 'POST',
+                body: data
+            })
+            .then(async response => {
                 if (response.ok) {
                     form.style.display = "none";
                     instruction.style.display = "none";
                     status.style.display = "block";
                 } else {
-                    alert("Error en el envío. Verificá la configuración.");
+                    const err = await response.json();
+                    alert("Error: " + (err.message || "No se pudo procesar el envío."));
                 }
-            }).catch(() => {
-                alert("Error de conexión.");
-            }).finally(() => {
+            })
+            .catch(() => {
+                alert("Error de conexión con el servidor de Alwaysdata.");
+            })
+            .finally(() => {
                 submitBtn.innerText = "SOLICITAR PITCH DECK";
                 submitBtn.disabled = false;
             });
