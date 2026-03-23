@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NLB8744K');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NexoFarma | Red de Salud Solidaria Argentina</title>
@@ -106,7 +111,8 @@
     </style>
 </head>
 <body>
-
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLB8744K"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <canvas id="nexoCanvas"></canvas>
 
     <section id="hero">
@@ -128,11 +134,11 @@
             <div class="impact-grid">
                 <div class="stat-card">
                     <h2 style="color: var(--primary);">+500</h2>
-                    <p style="color: var(--text-dim);">Usuarios Activos</p>
+                    <p style="color: var(--text-dim);">Personas Alcanzadas</p>
                 </div>
                 <div class="stat-card">
-                    <h2 style="color: var(--secondary);">1.2k</h2>
-                    <p style="color: var(--text-dim);">Medicamentos Recuperados</p>
+                    <h2 style="color: var(--secondary);">Global</h2>
+                    <p style="color: var(--text-dim);">Arquitectura Inédita</p>
                 </div>
                 <div class="stat-card">
                     <h2 style="color: var(--accent);">$4.5M</h2>
@@ -150,129 +156,5 @@
                     <p style="color: var(--text-dim); font-size: 1.1rem; margin-bottom: 20px;">
                         Implementamos validación inteligente y trazabilidad para conectar botiquines de todo el país con quienes más lo necesitan de forma segura.
                     </p>
-                    <div style="padding: 25px; background: rgba(30, 41, 59, 0.3); border-radius: 20px; border-left: 4px solid var(--primary);">
-                        <p style="font-style: italic;">"Estamos construyendo el nexo sanitario más grande del país."</p>
-                    </div>
-                </div>
-                <div class="mockup-container">
-                    <img src="mockup.png" alt="App Nexofarma" class="app-img">
-                </div>
-            </div>
-        </div>
-
-        <div class="video-full-width">
-            <div class="container">
-                <p style="color: var(--primary); font-weight: 800; letter-spacing: 4px; margin-bottom: 20px;">VIDEO INSTITUCIONAL</p>
-                <div class="video-wrapper">
-                    <video width="100%" controls poster="mockup.png">
-                        <source src="NexoFarma Institucional - Vertical_720p_caption.mp4" type="video/mp4">
-                        Tu navegador no soporta el video.
-                    </video>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contacto">
-        <div class="container">
-            <div class="form-glass" id="form-container">
-                <h2 style="margin-bottom: 15px;">Invertí en Impacto Social</h2>
-                <p style="color: var(--text-dim); margin-bottom: 35px;" id="form-instruction">Solicitá el Pitch Deck técnico para inversores.</p>
-                
-                <form id="contact-form" action="https://nexofarma.alwaysdata.net/email/procesar_lead.php" method="POST">
-                    <input type="text" name="name" placeholder="Nombre completo / Fondo" required>
-                    <input type="email" name="email" placeholder="Correo electrónico corporativo" required>
-                    <input type="tel" name="phone" placeholder="WhatsApp / Teléfono" required>
-                    <textarea name="message" rows="4" placeholder="Contanos tu interés estratégico en el proyecto"></textarea>
-                    
-                    <button type="submit" id="submit-btn" class="btn" style="width: 100%;">SOLICITAR PITCH DECK</button>
-                </form>
-
-                <div id="form-status" style="display:none; padding: 20px;">
-                    <div style="font-size: 3rem; margin-bottom: 20px;">✅</div>
-                    <h3 style="color: var(--primary);">¡Solicitud Recibida!</h3>
-                    <p style="color: var(--text-dim); margin-top: 10px;">En breve recibirás el material técnico en tu correo.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        const canvas = document.getElementById('nexoCanvas');
-        const ctx = canvas.getContext('2d');
-        let atoms = [];
-
-        function init() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            atoms = [];
-            const count = window.innerWidth < 768 ? 40 : 80;
-            for (let i = 0; i < count; i++) {
-                atoms.push({
-                    x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
-                    radius: Math.random() * 2 + 1
-                });
-            }
-        }
-
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            atoms.forEach((atom, i) => {
-                atom.x += atom.vx; atom.y += atom.vy;
-                if (atom.x < 0 || atom.x > canvas.width) atom.vx *= -1;
-                if (atom.y < 0 || atom.y > canvas.height) atom.vy *= -1;
-                ctx.beginPath(); ctx.arc(atom.x, atom.y, atom.radius, 0, Math.PI*2);
-                ctx.fillStyle = '#2DD4BF'; ctx.fill();
-                for (let j = i + 1; j < atoms.length; j++) {
-                    const dx = atom.x - atoms[j].x, dy = atom.y - atoms[j].y, dist = Math.sqrt(dx*dx + dy*dy);
-                    if (dist < 150) {
-                        ctx.strokeStyle = `rgba(56, 189, 248, ${0.3 - dist/150})`;
-                        ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(atom.x, atom.y); ctx.lineTo(atoms[j].x, atoms[j].y); ctx.stroke();
-                    }
-                }
-            });
-            requestAnimationFrame(draw);
-        }
-
-        const form = document.getElementById("contact-form");
-        const status = document.getElementById("form-status");
-        const instruction = document.getElementById("form-instruction");
-        const submitBtn = document.getElementById("submit-btn");
-
-        form.addEventListener("submit", async function(event) {
-            event.preventDefault();
-            submitBtn.innerText = "ENVIANDO...";
-            submitBtn.disabled = true;
-
-            // Captura de datos nativa para PHP
-            const data = new FormData(event.target);
-
-            fetch(event.target.action, {
-                method: 'POST',
-                body: data
-            })
-            .then(async response => {
-                if (response.ok) {
-                    form.style.display = "none";
-                    instruction.style.display = "none";
-                    status.style.display = "block";
-                } else {
-                    const err = await response.json();
-                    alert("Error: " + (err.message || "No se pudo procesar el envío."));
-                }
-            })
-            .catch(() => {
-                alert("Error de conexión con el servidor de Alwaysdata.");
-            })
-            .finally(() => {
-                submitBtn.innerText = "SOLICITAR PITCH DECK";
-                submitBtn.disabled = false;
-            });
-        });
-
-        window.addEventListener('resize', init);
-        init(); draw();
-    </script>
-</body>
-</html>
+                    <div style="padding: 25px; background: rgba(30, 41, 59, 0.3); border-radius: 20px; border-left: 4px solid var(--
+                        
