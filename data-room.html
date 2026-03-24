@@ -4,168 +4,388 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NexoFarma | Data Room Técnico</title>
+    <meta name="robots" content="noindex, nofollow">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        :root { --bg: #0B0F1A; --card: #161B2B; --primary: #2DD4BF; --secondary: #38BDF8; --white: #FFFFFF; --gray: #94A3B8; --error: #F43F5E; }
+        :root {
+            --bg: #0B0F1A; --card: #161B2B; --primary: #2DD4BF;
+            --secondary: #38BDF8; --white: #FFFFFF; --gray: #94A3B8; --error: #F43F5E;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--white); overflow-x: hidden; }
-        
-        /* Contenedores */
-        .container { width: 90%; max-width: 900px; margin: 0 auto; padding: 40px 0; }
-        .card { background: var(--card); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 20px; margin-bottom: 25px; position: relative; z-index: 2; }
-        .tech-box { background: #000; padding: 15px; border-radius: 12px; font-family: 'Courier New', monospace; color: var(--primary); border-left: 4px solid var(--secondary); margin: 15px 0; font-size: 0.85rem; overflow-x: auto; }
-        
-        /* Pantallas de Estado */
-        #status-screen { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
-        #main-content { display: none; } /* OCULTO HASTA VALIDAR */
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--white); overflow-x: hidden; line-height: 1.6; }
 
-        /* Marca de Agua */
-        .watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); font-size: 5rem; opacity: 0.03; pointer-events: none; z-index: 1; font-weight: 800; width: 150%; text-align: center; }
-        
-        /* Gráfico */
-        .chart-container { position: relative; height: 300px; width: 100%; margin-top: 20px; }
+        /* ── PANTALLA DE ESTADO ── */
+        #status-screen {
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center; padding: 20px;
+        }
+        .loader {
+            width: 40px; height: 40px;
+            border: 4px solid rgba(45,212,191,0.15);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        .loader { width: 40px; height: 40px; border: 4px solid var(--card); border-top: 4px solid var(--primary); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    </style>
-</head>
-<body>
+        /* ── CONTENIDO PRINCIPAL ── */
+        #main-content { display: none; }
 
-    <div id="watermark-text" class="watermark">CONFIDENCIAL</div>
-
-    <div id="status-screen">
-        <div id="loader" class="loader"></div>
-        <h2 id="status-title">Verificando Acceso</h2>
-        <p id="status-msg" style="color: var(--gray); margin-top: 10px;">Validando credenciales con el servidor de seguridad...</p>
-    </div>
-
-    <div id="main-content">
-        <div class="container">
-            <header style="margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;">
-                <h1 style="font-size: 2rem;">Blueprint Técnico <span style="color:var(--primary)">NexoFarma</span></h1>
-                <p style="color: var(--gray); margin-top: 10px;">Documento preparado para: <b id="user-display" style="color: var(--white)">---</b></p>
-            </header>
-
-            <div class="card">
-                <h2 style="color: var(--secondary)">🔍 Sección 1: Motor de Visión e Ingesta (OCR)</h2>
-                <p style="color: var(--gray); font-size: 0.9rem; margin-top: 10px;">Validación de medicamentos sin APIs externas costosas.</p>
-                <div class="tech-box">
-                    > OpenCV: Grayscale + Bilateral Filter <br>
-                    > Tesseract LSTM: Motor OCR especializado <br>
-                    > Parser Regex: Extracción [LOTE]/[VENC]/[DNI]
-                </div>
-            </div>
-
-            <div class="card">
-                <h2 style="color: var(--secondary)">🌍 Sección 2: Inteligencia Geográfica</h2>
-                <div class="tech-box">
-                    -- Búsqueda por radio en Chilecito <br>
-                    SELECT nombre FROM farmacias <br>
-                    WHERE ST_DWithin(geom, 'POINT(-67.5222 -29.1619)', 5000);
-                </div>
-            </div>
-
-            <div class="card">
-                <h2 style="color: var(--secondary)">🏗️ Sección 3: Stack de Escalabilidad</h2>
-                <p style="color: var(--gray); font-size: 0.9rem; margin: 10px 0;">Node.js | Docker | Kubernetes | Redis | AES-256</p>
-            </div>
-
-            <div class="card">
-                <h2 style="color: var(--secondary)">📈 Proyección de Crecimiento (36 Meses)</h2>
-                <div class="chart-container">
-                    <canvas id="projectionChart"></canvas>
-                </div>
-            </div>
-
-            <div class="card" style="border-left: 4px solid var(--primary);">
-                <h2 style="color: var(--white)">🚀 Roadmap de Ingeniería 2026</h2>
-                <p style="color: var(--gray); font-size: 0.9rem; margin-top: 10px;">
-                    <b>Q2:</b> Core API + OCR Local<br>
-                    <b>Q3:</b> Beta cerrada + Trazabilidad<br>
-                    <b>Q4:</b> Dashboard Analytics B2B
-                </p>
-            </div>
-
-            <footer style="text-align: center; color: var(--gray); font-size: 0.75rem; margin-top: 50px; line-height: 1.5;">
-                Propiedad de <b>Daniel Vargas — NexoFarma</b>.<br>
-                Protegido por Ley 24.766 de Confidencialidad. <br>
-                Jurisdicción: Chilecito, La Rioja.
-            </footer>
-        </div>
-    </div>
-
-    <script>
-        const token = new URLSearchParams(window.location.search).get('token');
-
-        function showError(titulo, msg) {
-            document.getElementById('loader').style.display = 'none';
-            document.getElementById('status-title').innerText = titulo;
-            document.getElementById('status-title').style.color = 'var(--error)';
-            document.getElementById('status-msg').innerHTML = `${msg}<br><br><a href="index.html" style="color: var(--primary); text-decoration:none;">← Volver al Inicio</a>`;
+        /* ── MARCA DE AGUA ── */
+        .watermark {
+            position: fixed; top: 50%; left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 4.5rem; opacity: 0.03; pointer-events: none;
+            z-index: 1; font-weight: 800; width: 150%; text-align: center;
+            white-space: nowrap;
         }
 
-        async function validar() {
-            if (!token) {
-                showError("403 - Denegado", "No se detectó un token de seguridad.");
+        /* ── LAYOUT ── */
+        .container { width: 90%; max-width: 900px; margin: 0 auto; padding: 50px 0 60px; }
+
+        .header {
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 28px; margin-bottom: 36px;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(45,212,191,0.1); color: var(--primary);
+            padding: 5px 14px; border-radius: 6px;
+            font-size: 0.72rem; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        /* ── CARDS ── */
+        .card {
+            background: var(--card);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 28px; border-radius: 20px; margin-bottom: 24px;
+        }
+        .card h2 {
+            color: var(--secondary); font-size: 1.2rem;
+            margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+        }
+        .card p { color: var(--gray); font-size: 0.9rem; margin-bottom: 4px; }
+
+        /* ── TECH BOX ── */
+        .tech-box {
+            background: #000; padding: 18px; border-radius: 12px;
+            font-family: 'Courier New', monospace; font-size: 0.85rem;
+            color: var(--primary); border-left: 4px solid var(--secondary);
+            margin-top: 15px; overflow-x: auto; line-height: 1.9;
+        }
+        .tech-comment { color: #A5B4FC; font-style: italic; }
+
+        /* ── STACK LIST ── */
+        .stack-list { display: flex; flex-direction: column; gap: 14px; margin-top: 16px; }
+        .stack-item {
+            display: flex; align-items: flex-start; gap: 14px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 12px; padding: 14px 16px;
+        }
+        .stack-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
+        .stack-info b { display: block; color: var(--white); font-size: 0.9rem; margin-bottom: 2px; }
+        .stack-info p { color: var(--gray); font-size: 0.82rem; margin: 0; }
+
+        /* ── ROADMAP ── */
+        .roadmap { display: flex; flex-direction: column; gap: 0; margin-top: 8px; }
+        .roadmap-item { display: flex; gap: 16px; align-items: flex-start; }
+        .roadmap-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+        .q-dot {
+            width: 32px; height: 32px; border-radius: 50%;
+            background: rgba(45,212,191,0.1); border: 2px solid var(--primary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.68rem; font-weight: 800; color: var(--primary);
+            flex-shrink: 0;
+        }
+        .q-line {
+            width: 2px; flex: 1; min-height: 28px;
+            background: linear-gradient(to bottom, rgba(45,212,191,0.3), transparent);
+            margin: 3px 0;
+        }
+        .roadmap-item:last-child .q-line { display: none; }
+        .roadmap-body { padding-bottom: 24px; }
+        .roadmap-item:last-child .roadmap-body { padding-bottom: 0; }
+        .roadmap-body b { display: block; color: var(--white); font-size: 0.9rem; margin-bottom: 4px; }
+        .roadmap-body p { color: var(--gray); font-size: 0.83rem; line-height: 1.5; }
+
+        /* ── GRÁFICO ── */
+        .chart-container { position: relative; height: 280px; width: 100%; margin-top: 20px; }
+
+        /* ── FOOTER ── */
+        .footer-legal {
+            text-align: center; color: var(--gray); font-size: 0.75rem;
+            margin-top: 48px; padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            line-height: 1.8;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 600px) {
+            .container { padding: 36px 0 48px; }
+            .card { padding: 20px; }
+            .watermark { font-size: 2.2rem; }
+            h1 { font-size: 1.6rem !important; }
+            .tech-box { font-size: 0.75rem; }
+            .chart-container { height: 220px; }
+        }
+            </style>
+            </head>
+<body>
+
+<div id="watermark-text" class="watermark">CONFIDENCIAL</div>
+
+<!-- ── PANTALLA DE ESTADO (carga / error) ── -->
+<div id="status-screen">
+    <div id="loader" class="loader"></div>
+    <h2 id="status-title" style="font-size:1.4rem;">Verificando Acceso</h2>
+    <p id="status-msg" style="color:var(--gray);margin-top:10px;max-width:360px;">
+        Validando credenciales con el servidor de seguridad...
+    </p>
+</div>
+
+<!-- ── CONTENIDO PRINCIPAL ── -->
+<div id="main-content">
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="header">
+            <span class="badge">🔐 Acceso Técnico Autorizado</span>
+            <h1 style="font-size:2.1rem; margin-top:12px; line-height:1.2;">
+                Blueprint de Ingeniería <span style="color:var(--primary)">NexoFarma</span>
+            </h1>
+            <p style="color:var(--gray); margin-top:10px;">
+                Documento preparado para: <b id="user-display" style="color:var(--white)">---</b>
+            </p>
+        </div>
+
+        <!-- SECCIÓN 1: OCR -->
+        <div class="card">
+            <h2>🔍 Motor de Visión e Ingesta (OCR)</h2>
+            <p>Pipeline de procesamiento de imágenes para validación de trazabilidad sin dependencia de APIs externas en Fase 1.</p>
+            <div class="tech-box">
+                // Pipeline de Procesamiento<br>
+                > OpenCV: Grayscale + Bilateral Filter (reducción de ruido)<br>
+                > Tesseract Engine: LSTM (Deep Learning) OCR<br>
+                > Post-Processing: Regex dinámico → Lote / Vencimiento / DNI<br>
+                <span class="tech-comment">// Output: JSON estructurado listo para persistencia en PostGIS</span>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 2: PostGIS -->
+        <div class="card">
+            <h2>🌍 Inteligencia Geográfica (PostGIS)</h2>
+            <p>Gestión de excedentes mediante coordenadas precisas para optimizar redistribución B2B y P2P en tiempo real.</p>
+            <div class="tech-box">
+                <span class="tech-comment">-- Búsqueda por radio de proximidad (Chilecito, La Rioja)</span><br>
+                SELECT farmacia_id, medicamento, stock_excedente<br>
+                FROM inventario_geo<br>
+                WHERE ST_DWithin(<br>
+                &nbsp;&nbsp;geom,<br>
+                &nbsp;&nbsp;ST_MakePoint(-67.5222, -29.1619)::geography,<br>
+                &nbsp;&nbsp;5000<br>
+                );<br><br>
+                <span class="tech-comment">-- Identificación de zonas críticas de desperdicio</span><br>
+                SELECT ST_ClusterKMeans(geom, 5) OVER() AS cluster_id,<br>
+                &nbsp;&nbsp;SUM(unidades_vencidas) AS desperdicio_total<br>
+                FROM inventario_geo GROUP BY cluster_id;
+            </div>
+        </div>
+
+        <!-- SECCIÓN 3: STACK -->
+        <div class="card">
+            <h2>🏗️ Stack de Escalabilidad Industrial</h2>
+            <p>Arquitectura modular para despliegue federal post-inversión pre-semilla.</p>
+            <div class="stack-list">
+                <div class="stack-item">
+                    <span class="stack-icon">⚙️</span>
+                    <div class="stack-info">
+                        <b>Core — Node.js Microservicios</b>
+                        <p>Arquitectura desacoplada de alta concurrencia. Cada módulo (OCR, geo, analytics) escala de forma independiente.</p>
+                    </div>
+                </div>
+                <div class="stack-item">
+                    <span class="stack-icon">🐳</span>
+                    <div class="stack-info">
+                        <b>Orquestación — Docker & Kubernetes</b>
+                        <p>Contenedores por nodo regional para baja latencia. Escalado horizontal automático ante picos de demanda.</p>
+                    </div>
+                </div>
+                <div class="stack-item">
+                    <span class="stack-icon">⚡</span>
+                    <div class="stack-info">
+                        <b>Caché — Redis</b>
+                        <p>Gestión de sesiones activas y estados de entrega en tiempo real. Reduce carga sobre PostgreSQL en consultas frecuentes.</p>
+                    </div>
+                </div>
+                <div class="stack-item">
+                    <span class="stack-icon">🔒</span>
+                    <div class="stack-info">
+                        <b>Seguridad — AES-256</b>
+                        <p>Encriptación de datos sensibles del paciente en reposo. Cumplimiento con normativa de protección de datos sanitarios.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 4: GRÁFICO -->
+        <div class="card">
+            <h2>📈 Proyección de Crecimiento (36 Meses)</h2>
+            <p>Transacciones P2P mensuales proyectadas desde lanzamiento de beta.</p>
+            <div class="chart-container">
+                <canvas id="projectionChart"></canvas>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 5: ROADMAP -->
+        <div class="card" style="border-left: 3px solid var(--primary);">
+            <h2 style="color:var(--white);">🗺️ Roadmap de Ingeniería 2026</h2>
+            <div class="roadmap" style="margin-top:20px;">
+                <div class="roadmap-item">
+                    <div class="roadmap-left">
+                        <div class="q-dot">Q2</div>
+                        <div class="q-line"></div>
+                    </div>
+                    <div class="roadmap-body">
+                        <b>Core API + Motor OCR Local</b>
+                        <p>Desarrollo del motor de validación Tesseract, setup del clúster PostgreSQL/PostGIS en VPS dedicado e integración con primeras farmacias piloto.</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-left">
+                        <div class="q-dot">Q3</div>
+                        <div class="q-line"></div>
+                    </div>
+                    <div class="roadmap-body">
+                        <b>Beta Cerrada + Trazabilidad Activa</b>
+                        <p>Implementación del nodo piloto en Chilecito. Validación de lógica P2P, pruebas de carga en el motor de mapas e integración de recetas digitales.</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-left">
+                        <div class="q-dot">Q4</div>
+                    </div>
+                    <div class="roadmap-body">
+                        <b>Dashboard Analytics B2B</b>
+                        <p>Apertura de API para laboratorios y farmacéuticas. Generación de reportes de demanda insatisfecha basados en datos geoespaciales. Primeros contratos piloto.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER LEGAL -->
+        <div class="footer-legal">
+            Propiedad intelectual de <b style="color:var(--white)">Daniel Vargas — NexoFarma</b>.<br>
+            Protegido bajo Ley N° 24.766 de Confidencialidad de la República Argentina.<br>
+            Cualquier divulgación no autorizada está sujeta a acciones legales en la jurisdicción de Chilecito, La Rioja.
+        </div>
+
+    </div>
+</div><!-- /main-content -->
+
+<script>
+    const token = new URLSearchParams(window.location.search).get('token');
+
+    function showError(titulo, msg) {
+        document.getElementById('loader').style.display = 'none';
+        const t = document.getElementById('status-title');
+        t.innerText = titulo;
+        t.style.color = '#F43F5E';
+        document.getElementById('status-msg').innerHTML =
+            `${msg}<br><br><a href="index.html" style="color:var(--primary);text-decoration:none;font-weight:800;">← Volver al Inicio</a>`;
+    }
+
+    async function validar() {
+        if (!token) {
+            showError("403 — Denegado", "No se detectó un token de seguridad válido.");
+            return;
+        }
+
+        try {
+            const response = await fetch(
+                `https://nexofarma.alwaysdata.net/signature/validar-token?token=${token}`
+            );
+
+            if (response.status === 403) {
+                showError("Acceso Expirado", "Tu token no es válido o ya caducó.<br>Solicitá un nuevo acceso firmando el NDA.");
                 return;
             }
 
-            try {
-                const response = await fetch(`https://nexofarma.alwaysdata.net/signature/validar-token?token=${token}`);
-                
-                if (response.status === 403) {
-                    showError("Acceso Expirado", "Tu token no es válido o ya caducó.");
-                    return;
-                }
+            const data = await response.json();
 
-                const data = await response.json();
+            if (data.valid) {
+                // Personalizar UI
+                document.getElementById('user-display').innerText = data.nombre;
+                document.getElementById('watermark-text').innerText =
+                    `${data.nombre.toUpperCase()} — NEXOFARMA CONFIDENCIAL`;
 
-                if (data.valid) {
-                    // 1. Llenar datos
-                    document.getElementById('user-display').innerText = data.nombre;
-                    document.getElementById('watermark-text').innerText = `${data.nombre.toUpperCase()} - CONFIDENCIAL`;
-                    
-                    // 2. Cambiar pantallas
-                    document.getElementById('status-screen').style.display = 'none';
-                    document.getElementById('main-content').style.display = 'block';
+                // Cambiar pantallas
+                document.getElementById('status-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
 
-                    // 3. Renderizar Gráfico
-                    renderChart();
-                }
-            } catch (err) {
-                showError("Error de Conexión", "No se pudo contactar al servidor de seguridad.");
+                // Cargar Chart.js de forma dinámica (solo si el acceso es válido)
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+                script.onload = renderChart;
+                document.head.appendChild(script);
+
+            } else {
+                showError("Acceso Denegado", "Las credenciales no son válidas.");
             }
-        }
 
-        function renderChart() {
-            const ctx = document.getElementById('projectionChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['Mes 6', 'Mes 12', 'Mes 18', 'Mes 24', 'Mes 30', 'Mes 36'],
-                    datasets: [{
-                        label: 'Transacciones',
-                        data: [500, 3000, 12000, 35000, 70000, 150000],
-                        borderColor: '#2DD4BF',
-                        backgroundColor: 'rgba(45, 212, 191, 0.1)',
-                        fill: true,
-                        tension: 0.4
-                    }]
+        } catch (err) {
+            showError("Error de Conexión", "No se pudo contactar al servidor de seguridad.<br>Intentá de nuevo en unos instantes.");
+        }
+    }
+
+    function renderChart() {
+        const ctx = document.getElementById('projectionChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Mes 6', 'Mes 12', 'Mes 18', 'Mes 24', 'Mes 30', 'Mes 36'],
+                datasets: [{
+                    label: 'Transacciones P2P mensuales',
+                    data: [500, 3000, 12000, 35000, 70000, 150000],
+                    borderColor: '#2DD4BF',
+                    backgroundColor: 'rgba(45, 212, 191, 0.08)',
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#2DD4BF',
+                    pointRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: { color: '#94A3B8', font: { size: 12 } }
+                    }
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94A3B8' } },
-                        x: { ticks: { color: '#94A3B8' } }
+                scales: {
+                    y: {
+                        grid: { color: 'rgba(255,255,255,0.04)' },
+                        ticks: {
+                            color: '#94A3B8',
+                            callback: val => val.toLocaleString('es-AR')
+                        }
+                    },
+                    x: {
+                        grid: { color: 'rgba(255,255,255,0.04)' },
+                        ticks: { color: '#94A3B8' }
                     }
                 }
-            });
-        }
+            }
+        });
+    }
 
-        validar();
-    </script>
+    validar();
+</script>
 </body>
 </html>
