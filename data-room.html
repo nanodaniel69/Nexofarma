@@ -9,7 +9,8 @@
     <style>
         :root {
             --bg: #0B0F1A; --card: #161B2B; --primary: #2DD4BF;
-            --secondary: #38BDF8; --white: #FFFFFF; --gray: #94A3B8; --error: #F43F5E;
+            --secondary: #38BDF8; --white: #FFFFFF; --gray: #94A3B8;
+            --error: #F43F5E; --violet: #818CF8; --green: #4ADE80;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--white); overflow-x: hidden; line-height: 1.6; }
@@ -30,7 +31,6 @@
         }
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* ── CONTENIDO PRINCIPAL ── */
         #main-content { display: none; }
 
         /* ── MARCA DE AGUA ── */
@@ -38,49 +38,113 @@
             position: fixed; top: 50%; left: 50%;
             transform: translate(-50%, -50%) rotate(-30deg);
             font-size: 4.5rem; opacity: 0.03; pointer-events: none;
-            z-index: 1; font-weight: 800; width: 150%; text-align: center;
-            white-space: nowrap;
+            z-index: 1; font-weight: 800; width: 150%;
+            text-align: center; white-space: nowrap;
         }
 
         /* ── LAYOUT ── */
         .container { width: 90%; max-width: 900px; margin: 0 auto; padding: 50px 0 60px; }
-
-        .header {
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            padding-bottom: 28px; margin-bottom: 36px;
-        }
+        .header { border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 28px; margin-bottom: 36px; }
         .badge {
             display: inline-block;
             background: rgba(45,212,191,0.1); color: var(--primary);
             padding: 5px 14px; border-radius: 6px;
             font-size: 0.72rem; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 1px;
-            margin-bottom: 14px;
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;
         }
 
         /* ── CARDS ── */
-        .card {
-            background: var(--card);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 28px; border-radius: 20px; margin-bottom: 24px;
-        }
-        .card h2 {
-            color: var(--secondary); font-size: 1.2rem;
-            margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
-        }
-        .card p { color: var(--gray); font-size: 0.9rem; margin-bottom: 4px; }
+        .card { background: var(--card); border: 1px solid rgba(255,255,255,0.05); padding: 28px; border-radius: 20px; margin-bottom: 24px; }
+        .card h2 { font-size: 1.2rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .card > p { color: var(--gray); font-size: 0.9rem; margin-bottom: 4px; }
 
         /* ── TECH BOX ── */
         .tech-box {
             background: #000; padding: 18px; border-radius: 12px;
-            font-family: 'Courier New', monospace; font-size: 0.85rem;
+            font-family: 'Courier New', monospace; font-size: 0.82rem;
             color: var(--primary); border-left: 4px solid var(--secondary);
             margin-top: 15px; overflow-x: auto; line-height: 1.9;
         }
         .tech-comment { color: #A5B4FC; font-style: italic; }
+        .tech-highlight { color: var(--green); }
+
+        /* ── FLUJOS ── */
+        .flujos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+        @media (max-width: 640px) { .flujos-grid { grid-template-columns: 1fr; } }
+
+        .flujo-card {
+            border-radius: 16px; padding: 20px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .flujo-card.donante { background: rgba(45,212,191,0.04); border-color: rgba(45,212,191,0.2); }
+        .flujo-card.solicitante { background: rgba(56,189,248,0.04); border-color: rgba(56,189,248,0.2); }
+
+        .flujo-title {
+            font-size: 0.8rem; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+        }
+        .flujo-title.t-teal { color: var(--primary); }
+        .flujo-title.t-sky  { color: var(--secondary); }
+
+        .flujo-steps { display: flex; flex-direction: column; gap: 0; }
+        .flujo-step { display: flex; gap: 12px; align-items: flex-start; }
+        .step-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+        .step-dot {
+            width: 22px; height: 22px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.65rem; font-weight: 800; flex-shrink: 0;
+        }
+        .step-dot.teal { background: rgba(45,212,191,0.15); color: var(--primary); border: 1.5px solid var(--primary); }
+        .step-dot.sky  { background: rgba(56,189,248,0.15); color: var(--secondary); border: 1.5px solid var(--secondary); }
+        .step-line { width: 1.5px; flex: 1; min-height: 16px; margin: 2px 0; }
+        .step-line.teal { background: linear-gradient(to bottom, rgba(45,212,191,0.3), transparent); }
+        .step-line.sky  { background: linear-gradient(to bottom, rgba(56,189,248,0.3), transparent); }
+        .flujo-step:last-child .step-line { display: none; }
+        .step-body { padding-bottom: 14px; }
+        .flujo-step:last-child .step-body { padding-bottom: 0; }
+        .step-body b { display: block; font-size: 0.82rem; color: var(--white); margin-bottom: 2px; }
+        .step-body p { font-size: 0.76rem; color: var(--gray); line-height: 1.4; }
+
+        /* ── TABLAS DE DATOS ── */
+        .tables-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 16px; }
+        .table-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px; padding: 18px;
+        }
+        .table-name {
+            font-family: 'Courier New', monospace;
+            font-size: 0.78rem; color: var(--primary);
+            font-weight: 800; margin-bottom: 10px;
+            padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .table-fields { display: flex; flex-direction: column; gap: 5px; }
+        .field-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; }
+        .field-name { color: var(--white); font-family: 'Courier New', monospace; }
+        .field-type { color: var(--violet); font-size: 0.68rem; font-family: 'Courier New', monospace; }
+        .field-pk { color: var(--green); font-size: 0.62rem; font-weight: 800; text-transform: uppercase; }
+
+        /* ── DATO ESTRATÉGICO ── */
+        .dato-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 16px; }
+        .dato-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 14px; padding: 16px;
+        }
+        .dato-card b { display: block; font-size: 0.85rem; color: var(--white); margin-bottom: 4px; }
+        .dato-card p { font-size: 0.78rem; color: var(--gray); line-height: 1.4; }
+        .dato-tag {
+            display: inline-block; font-size: 0.65rem; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 0.08em;
+            padding: 2px 8px; border-radius: 4px; margin-bottom: 8px;
+        }
+        .tag-estado { background: rgba(56,189,248,0.1); color: var(--secondary); }
+        .tag-lab    { background: rgba(45,212,191,0.1); color: var(--primary); }
+        .tag-farma  { background: rgba(129,140,248,0.1); color: var(--violet); }
 
         /* ── STACK LIST ── */
-        .stack-list { display: flex; flex-direction: column; gap: 14px; margin-top: 16px; }
+        .stack-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
         .stack-item {
             display: flex; align-items: flex-start; gap: 14px;
             background: rgba(255,255,255,0.02);
@@ -88,19 +152,18 @@
             border-radius: 12px; padding: 14px 16px;
         }
         .stack-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
-        .stack-info b { display: block; color: var(--white); font-size: 0.9rem; margin-bottom: 2px; }
-        .stack-info p { color: var(--gray); font-size: 0.82rem; margin: 0; }
+        .stack-info b { display: block; color: var(--white); font-size: 0.88rem; margin-bottom: 2px; }
+        .stack-info p { color: var(--gray); font-size: 0.8rem; margin: 0; }
 
         /* ── ROADMAP ── */
-        .roadmap { display: flex; flex-direction: column; gap: 0; margin-top: 8px; }
+        .roadmap { display: flex; flex-direction: column; gap: 0; margin-top: 20px; }
         .roadmap-item { display: flex; gap: 16px; align-items: flex-start; }
         .roadmap-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
         .q-dot {
             width: 32px; height: 32px; border-radius: 50%;
             background: rgba(45,212,191,0.1); border: 2px solid var(--primary);
             display: flex; align-items: center; justify-content: center;
-            font-size: 0.68rem; font-weight: 800; color: var(--primary);
-            flex-shrink: 0;
+            font-size: 0.68rem; font-weight: 800; color: var(--primary); flex-shrink: 0;
         }
         .q-line {
             width: 2px; flex: 1; min-height: 28px;
@@ -120,26 +183,24 @@
         .footer-legal {
             text-align: center; color: var(--gray); font-size: 0.75rem;
             margin-top: 48px; padding-top: 24px;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            line-height: 1.8;
+            border-top: 1px solid rgba(255,255,255,0.06); line-height: 1.8;
         }
 
-        /* ── RESPONSIVE ── */
         @media (max-width: 600px) {
             .container { padding: 36px 0 48px; }
             .card { padding: 20px; }
-            .watermark { font-size: 2.2rem; }
+            .watermark { font-size: 2rem; }
             h1 { font-size: 1.6rem !important; }
-            .tech-box { font-size: 0.75rem; }
+            .tech-box { font-size: 0.72rem; }
             .chart-container { height: 220px; }
         }
-            </style>
-            </head>
+                     </style>
+                     </head>
 <body>
 
 <div id="watermark-text" class="watermark">CONFIDENCIAL</div>
 
-<!-- ── PANTALLA DE ESTADO (carga / error) ── -->
+<!-- PANTALLA DE ESTADO -->
 <div id="status-screen">
     <div id="loader" class="loader"></div>
     <h2 id="status-title" style="font-size:1.4rem;">Verificando Acceso</h2>
@@ -148,143 +209,300 @@
     </p>
 </div>
 
-<!-- ── CONTENIDO PRINCIPAL ── -->
+<!-- CONTENIDO PRINCIPAL -->
 <div id="main-content">
-    <div class="container">
+<div class="container">
 
-        <!-- HEADER -->
-        <div class="header">
-            <span class="badge">🔐 Acceso Técnico Autorizado</span>
-            <h1 style="font-size:2.1rem; margin-top:12px; line-height:1.2;">
-                Blueprint de Ingeniería <span style="color:var(--primary)">NexoFarma</span>
-            </h1>
-            <p style="color:var(--gray); margin-top:10px;">
-                Documento preparado para: <b id="user-display" style="color:var(--white)">---</b>
-            </p>
-        </div>
-
-        <!-- SECCIÓN 1: OCR -->
-        <div class="card">
-            <h2>🔍 Motor de Visión e Ingesta (OCR)</h2>
-            <p>Pipeline de procesamiento de imágenes para validación de trazabilidad sin dependencia de APIs externas en Fase 1.</p>
-            <div class="tech-box">
-                // Pipeline de Procesamiento<br>
-                > OpenCV: Grayscale + Bilateral Filter (reducción de ruido)<br>
-                > Tesseract Engine: LSTM (Deep Learning) OCR<br>
-                > Post-Processing: Regex dinámico → Lote / Vencimiento / DNI<br>
-                <span class="tech-comment">// Output: JSON estructurado listo para persistencia en PostGIS</span>
-            </div>
-        </div>
-
-        <!-- SECCIÓN 2: PostGIS -->
-        <div class="card">
-            <h2>🌍 Inteligencia Geográfica (PostGIS)</h2>
-            <p>Gestión de excedentes mediante coordenadas precisas para optimizar redistribución B2B y P2P en tiempo real.</p>
-            <div class="tech-box">
-                <span class="tech-comment">-- Búsqueda por radio de proximidad (Chilecito, La Rioja)</span><br>
-                SELECT farmacia_id, medicamento, stock_excedente<br>
-                FROM inventario_geo<br>
-                WHERE ST_DWithin(<br>
-                &nbsp;&nbsp;geom,<br>
-                &nbsp;&nbsp;ST_MakePoint(-67.5222, -29.1619)::geography,<br>
-                &nbsp;&nbsp;5000<br>
-                );<br><br>
-                <span class="tech-comment">-- Identificación de zonas críticas de desperdicio</span><br>
-                SELECT ST_ClusterKMeans(geom, 5) OVER() AS cluster_id,<br>
-                &nbsp;&nbsp;SUM(unidades_vencidas) AS desperdicio_total<br>
-                FROM inventario_geo GROUP BY cluster_id;
-            </div>
-        </div>
-
-        <!-- SECCIÓN 3: STACK -->
-        <div class="card">
-            <h2>🏗️ Stack de Escalabilidad Industrial</h2>
-            <p>Arquitectura modular para despliegue federal post-inversión pre-semilla.</p>
-            <div class="stack-list">
-                <div class="stack-item">
-                    <span class="stack-icon">⚙️</span>
-                    <div class="stack-info">
-                        <b>Core — Node.js Microservicios</b>
-                        <p>Arquitectura desacoplada de alta concurrencia. Cada módulo (OCR, geo, analytics) escala de forma independiente.</p>
-                    </div>
-                </div>
-                <div class="stack-item">
-                    <span class="stack-icon">🐳</span>
-                    <div class="stack-info">
-                        <b>Orquestación — Docker & Kubernetes</b>
-                        <p>Contenedores por nodo regional para baja latencia. Escalado horizontal automático ante picos de demanda.</p>
-                    </div>
-                </div>
-                <div class="stack-item">
-                    <span class="stack-icon">⚡</span>
-                    <div class="stack-info">
-                        <b>Caché — Redis</b>
-                        <p>Gestión de sesiones activas y estados de entrega en tiempo real. Reduce carga sobre PostgreSQL en consultas frecuentes.</p>
-                    </div>
-                </div>
-                <div class="stack-item">
-                    <span class="stack-icon">🔒</span>
-                    <div class="stack-info">
-                        <b>Seguridad — AES-256</b>
-                        <p>Encriptación de datos sensibles del paciente en reposo. Cumplimiento con normativa de protección de datos sanitarios.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- SECCIÓN 4: GRÁFICO -->
-        <div class="card">
-            <h2>📈 Proyección de Crecimiento (36 Meses)</h2>
-            <p>Transacciones P2P mensuales proyectadas desde lanzamiento de beta.</p>
-            <div class="chart-container">
-                <canvas id="projectionChart"></canvas>
-            </div>
-        </div>
-
-        <!-- SECCIÓN 5: ROADMAP -->
-        <div class="card" style="border-left: 3px solid var(--primary);">
-            <h2 style="color:var(--white);">🗺️ Roadmap de Ingeniería 2026</h2>
-            <div class="roadmap" style="margin-top:20px;">
-                <div class="roadmap-item">
-                    <div class="roadmap-left">
-                        <div class="q-dot">Q2</div>
-                        <div class="q-line"></div>
-                    </div>
-                    <div class="roadmap-body">
-                        <b>Core API + Motor OCR Local</b>
-                        <p>Desarrollo del motor de validación Tesseract, setup del clúster PostgreSQL/PostGIS en VPS dedicado e integración con primeras farmacias piloto.</p>
-                    </div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-left">
-                        <div class="q-dot">Q3</div>
-                        <div class="q-line"></div>
-                    </div>
-                    <div class="roadmap-body">
-                        <b>Beta Cerrada + Trazabilidad Activa</b>
-                        <p>Implementación del nodo piloto en Chilecito. Validación de lógica P2P, pruebas de carga en el motor de mapas e integración de recetas digitales.</p>
-                    </div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-left">
-                        <div class="q-dot">Q4</div>
-                    </div>
-                    <div class="roadmap-body">
-                        <b>Dashboard Analytics B2B</b>
-                        <p>Apertura de API para laboratorios y farmacéuticas. Generación de reportes de demanda insatisfecha basados en datos geoespaciales. Primeros contratos piloto.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- FOOTER LEGAL -->
-        <div class="footer-legal">
-            Propiedad intelectual de <b style="color:var(--white)">Daniel Vargas — NexoFarma</b>.<br>
-            Protegido bajo Ley N° 24.766 de Confidencialidad de la República Argentina.<br>
-            Cualquier divulgación no autorizada está sujeta a acciones legales en la jurisdicción de Chilecito, La Rioja.
-        </div>
-
+    <!-- HEADER -->
+    <div class="header">
+        <span class="badge">🔐 Acceso Técnico Autorizado</span>
+        <h1 style="font-size:2.1rem;margin-top:12px;line-height:1.2;">
+            Blueprint de Ingeniería <span style="color:var(--primary)">NexoFarma</span>
+        </h1>
+        <p style="color:var(--gray);margin-top:10px;">
+            Documento preparado para: <b id="user-display" style="color:var(--white)">---</b>
+        </p>
     </div>
+
+    <!-- SECCIÓN 1: OCR -->
+    <div class="card">
+        <h2 style="color:var(--secondary)">🔍 Motor de Visión e Ingesta (OCR)</h2>
+        <p>Pipeline de procesamiento de imágenes para dos casos de uso: validación de <b style="color:var(--white)">recetas médicas</b> (solicitante) y <b style="color:var(--white)">troqueles de medicamentos</b> (donante).</p>
+        <div class="tech-box">
+            <span class="tech-comment">// Pipeline unificado para receta y troquel</span><br>
+            > OpenCV: Grayscale + Bilateral Filter (reducción de ruido)<br>
+            > Tesseract Engine: LSTM (Deep Learning) OCR<br>
+            > Parser Regex:<br>
+            &nbsp;&nbsp;- Receta → [Medicamento] [Dosis] [Médico] [Fecha]<br>
+            &nbsp;&nbsp;- Troquel → [Lote] [Vencimiento] [Droga] [Laboratorio]<br>
+            <span class="tech-comment">// Output: JSON estructurado → trigger de consulta geoespacial</span>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 2: FLUJOS -->
+    <div class="card">
+        <h2 style="color:var(--secondary)">🔄 Flujos de Matching P2P + CAP</h2>
+        <p>Dos flujos espejo que se complementan. El sistema mantiene oferta y demanda activa en tiempo real.</p>
+
+        <div class="flujos-grid">
+            <!-- FLUJO A: DONANTE -->
+            <div class="flujo-card donante">
+                <div class="flujo-title t-teal">💊 Flujo A — Donante</div>
+                <div class="flujo-steps">
+                    <div class="flujo-step">
+                        <div class="step-left">
+                            <div class="step-dot teal">1</div>
+                            <div class="step-line teal"></div>
+                        </div>
+                        <div class="step-body">
+                            <b>Escaneo OCR del troquel</b>
+                            <p>Valida lote, vencimiento y droga del medicamento excedente.</p>
+                        </div>
+                    </div>
+                    <div class="flujo-step">
+                        <div class="step-left">
+                            <div class="step-dot teal">2</div>
+                            <div class="step-line teal"></div>
+                        </div>
+                        <div class="step-body">
+                            <b>Consulta demanda cercana</b>
+                            <p>Busca solicitudes activas del mismo medicamento en radio de 5km.</p>
+                        </div>
+                    </div>
+                    <div class="flujo-step">
+                        <div class="step-left">
+                            <div class="step-dot teal">3</div>
+                        </div>
+                        <div class="step-body">
+                            <b>Match o espera activa</b>
+                            <p>Si hay solicitante → notificación instantánea. Si no → queda en <code style="color:var(--primary)">donantes_geo</code>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FLUJO B: SOLICITANTE -->
+            <div class="flujo-card solicitante">
+                <div class="flujo-title t-sky">🏥 Flujo B — Solicitante</div>
+                <div class="flujo-steps">
+                    <div class="flujo-step">
+                        <div class="step-left">
+                            <div class="step-dot sky">1</div>
+                            <div class="step-line sky"></div>
+                        </div>
+                        <div class="step-body">
+                            <b>Escaneo OCR de receta</b>
+                            <p>Valida autenticidad: médico, medicamento, dosis y fecha de emisión.</p>
+                        </div>
+                    </div>
+                    <div class="flujo-step">
+                        <div class="step-left">
+                            <div class="step-dot sky">2</div>
+                            <div class="step-line sky"></div>
+                        </div>
+                        <div class="step-body">
+                            <b>Consulta con prioridad</b>
+                            <p>1° CAP zonal más cercano → 2° donante P2P cercano.</p>
+                        </div>
+                    </div>
+                    <div class="flujo-step">
+                        <div class="step-left">
+                            <div class="step-dot sky">3</div>
+                        </div>
+                        <div class="step-body">
+                            <b>Match o espera activa</b>
+                            <p>Si hay oferta → notificación con origen (CAP o donante). Si no → queda en <code style="color:var(--secondary)">solicitudes_geo</code>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 3: QUERIES -->
+    <div class="card">
+        <h2 style="color:var(--secondary)">🌍 Inteligencia Geográfica (PostGIS)</h2>
+        <p>Tres tablas geoespaciales. La consulta de matching respeta el orden de prioridad: CAP zonal → donante P2P. Todo el proceso es gratuito para el usuario final.</p>
+
+        <div class="tech-box">
+            <span class="tech-comment">-- Flujo A: Donante busca demanda activa cercana</span><br>
+            SELECT solicitante_id, medicamento, ubicacion<br>
+            FROM solicitudes_geo<br>
+            WHERE medicamento = $1<br>
+            &nbsp;&nbsp;AND ST_DWithin(geom, $ubicacion_donante, 5000)<br>
+            &nbsp;&nbsp;AND activo = true;<br><br>
+
+            <span class="tech-comment">-- Flujo B: Solicitante busca oferta con prioridad CAP → P2P</span><br>
+            SELECT <span class="tech-highlight">'CAP'</span> AS fuente, cap_id AS origen_id,<br>
+            &nbsp;&nbsp;medicamento, unidades_disponibles<br>
+            FROM red_caps_geo<br>
+            WHERE medicamento = $1<br>
+            &nbsp;&nbsp;AND ST_DWithin(geom, $ubicacion_solicitante, 5000)<br>
+            &nbsp;&nbsp;AND unidades_disponibles > 0<br><br>
+            UNION ALL<br><br>
+            SELECT <span class="tech-highlight">'DONANTE'</span> AS fuente, donante_id AS origen_id,<br>
+            &nbsp;&nbsp;medicamento, cantidad_disponible<br>
+            FROM donantes_geo<br>
+            WHERE medicamento = $1<br>
+            &nbsp;&nbsp;AND ST_DWithin(geom, $ubicacion_solicitante, 5000)<br>
+            &nbsp;&nbsp;AND activo = true<br><br>
+            <span class="tech-comment">-- CAP aparece siempre antes que DONANTE</span><br>
+            ORDER BY fuente ASC;
+        </div>
+
+        <!-- MODELO DE DATOS -->
+        <p style="color:var(--gray);font-size:0.85rem;margin-top:20px;margin-bottom:4px;">Modelo de datos — tres tablas geoespaciales:</p>
+        <div class="tables-grid">
+            <div class="table-card">
+                <div class="table-name">red_caps_geo</div>
+                <div class="table-fields">
+                    <div class="field-row"><span class="field-name">cap_id</span><span class="field-pk">PK</span></div>
+                    <div class="field-row"><span class="field-name">medicamento</span><span class="field-type">VARCHAR</span></div>
+                    <div class="field-row"><span class="field-name">unidades_disponibles</span><span class="field-type">INTEGER</span></div>
+                    <div class="field-row"><span class="field-name">geom</span><span class="field-type">GEOGRAPHY</span></div>
+                    <div class="field-row"><span class="field-name">zona</span><span class="field-type">VARCHAR</span></div>
+                </div>
+            </div>
+            <div class="table-card">
+                <div class="table-name">donantes_geo</div>
+                <div class="table-fields">
+                    <div class="field-row"><span class="field-name">donante_id</span><span class="field-pk">PK</span></div>
+                    <div class="field-row"><span class="field-name">medicamento</span><span class="field-type">VARCHAR</span></div>
+                    <div class="field-row"><span class="field-name">cantidad_disponible</span><span class="field-type">INTEGER</span></div>
+                    <div class="field-row"><span class="field-name">geom</span><span class="field-type">GEOGRAPHY</span></div>
+                    <div class="field-row"><span class="field-name">activo</span><span class="field-type">BOOLEAN</span></div>
+                </div>
+            </div>
+            <div class="table-card">
+                <div class="table-name">solicitudes_geo</div>
+                <div class="table-fields">
+                    <div class="field-row"><span class="field-name">solicitud_id</span><span class="field-pk">PK</span></div>
+                    <div class="field-row"><span class="field-name">medicamento</span><span class="field-type">VARCHAR</span></div>
+                    <div class="field-row"><span class="field-name">receta_hash</span><span class="field-type">VARCHAR</span></div>
+                    <div class="field-row"><span class="field-name">geom</span><span class="field-type">GEOGRAPHY</span></div>
+                    <div class="field-row"><span class="field-name">activo</span><span class="field-type">BOOLEAN</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 4: DATO ESTRATÉGICO -->
+    <div class="card" style="border-color: rgba(56,189,248,0.15);">
+        <h2 style="color:var(--secondary)">📊 El Dato Estratégico — Inteligencia Sanitaria</h2>
+        <p>La plataforma es 100% gratuita para donantes y solicitantes. Cada redistribución genera datos estructurados y geolocalizados que tienen valor para organizaciones que necesitan entender el sistema de salud.</p>
+        <div class="dato-grid">
+            <div class="dato-card">
+                <span class="dato-tag tag-lab">Laboratorios</span>
+                <b>Medicamento más donado por zona</b>
+                <p>Señal de sobreproducción regional. Permite ajustar volúmenes de fabricación y distribución.</p>
+            </div>
+            <div class="dato-card">
+                <span class="dato-tag tag-estado">Estado</span>
+                <b>Medicamento más solicitado sin cobertura CAP</b>
+                <p>Mapea en tiempo real las fallas de distribución del sistema público de salud.</p>
+            </div>
+            <div class="dato-card">
+                <span class="dato-tag tag-estado">Estado</span>
+                <b>Zonas con alta demanda sin CAP cercano</b>
+                <p>Informa decisiones de apertura de nuevos centros de atención primaria de salud.</p>
+            </div>
+            <div class="dato-card">
+                <span class="dato-tag tag-farma">Farmacéuticas</span>
+                <b>Brechas de acceso por droga y región</b>
+                <p>Identifica poblaciones sin acceso real a medicamentos que existen en el mercado.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 5: STACK -->
+    <div class="card">
+        <h2 style="color:var(--secondary)">🏗️ Stack de Escalabilidad Industrial</h2>
+        <p>Arquitectura modular para despliegue federal post-inversión.</p>
+        <div class="stack-list">
+            <div class="stack-item">
+                <span class="stack-icon">⚙️</span>
+                <div class="stack-info">
+                    <b>Core — Node.js Microservicios</b>
+                    <p>Módulos desacoplados: OCR, matching geoespacial, notificaciones y analytics escalan de forma independiente.</p>
+                </div>
+            </div>
+            <div class="stack-item">
+                <span class="stack-icon">🐳</span>
+                <div class="stack-info">
+                    <b>Orquestación — Docker & Kubernetes</b>
+                    <p>Nodos regionales para baja latencia. Escalado horizontal automático ante picos de publicaciones.</p>
+                </div>
+            </div>
+            <div class="stack-item">
+                <span class="stack-icon">⚡</span>
+                <div class="stack-info">
+                    <b>Caché — Redis</b>
+                    <p>Gestión de solicitudes de donación activas y estados de matching en tiempo real. Reduce carga sobre PostgreSQL en consultas frecuentes.</p>
+                </div>
+            </div>
+            <div class="stack-item">
+                <span class="stack-icon">🔒</span>
+                <div class="stack-info">
+                    <b>Seguridad — AES-256</b>
+                    <p>Encriptación de datos sensibles del paciente en reposo. Cumplimiento con normativa de protección de datos sanitarios.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 6: GRÁFICO -->
+    <div class="card">
+        <h2 style="color:var(--secondary)">📈 Proyección de Crecimiento (36 Meses)</h2>
+        <p>Transacciones P2P mensuales proyectadas desde lanzamiento de beta en Chilecito.</p>
+        <div class="chart-container">
+            <canvas id="projectionChart"></canvas>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 7: ROADMAP -->
+    <div class="card" style="border-left: 3px solid var(--primary);">
+        <h2 style="color:var(--white);">🗺️ Roadmap de Ingeniería 2026</h2>
+        <div class="roadmap">
+            <div class="roadmap-item">
+                <div class="roadmap-left">
+                    <div class="q-dot">Q2</div>
+                    <div class="q-line"></div>
+                </div>
+                <div class="roadmap-body">
+                    <b>Core API + Motor OCR Local</b>
+                    <p>Desarrollo del pipeline OCR para recetas y troqueles. Setup del clúster PostgreSQL/PostGIS. Implementación de las tres tablas geoespaciales y lógica de matching.</p>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-left">
+                    <div class="q-dot">Q3</div>
+                    <div class="q-line"></div>
+                </div>
+                <div class="roadmap-body">
+                    <b>Beta Cerrada — Piloto Chilecito</b>
+                    <p>Implementación del nodo piloto con CAPs zonales de Chilecito. Validación de flujos A y B en condiciones reales. Pruebas de carga en motor de matching geoespacial.</p>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-left">
+                    <div class="q-dot">Q4</div>
+                </div>
+                <div class="roadmap-body">
+                    <b>Dashboard Analytics — Inteligencia Sanitaria</b>
+                    <p>Apertura de API de datos para laboratorios, farmacéuticas y organismos del Estado. Reportes de demanda insatisfecha, zonas críticas y brechas de acceso. Primeros acuerdos de licenciamiento de datos con organismos públicos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER LEGAL -->
+    <div class="footer-legal">
+        Propiedad intelectual de <b style="color:var(--white)">Daniel Vargas — NexoFarma</b>.<br>
+        Protegido bajo Ley N° 24.766 de Confidencialidad de la República Argentina.<br>
+        Cualquier divulgación no autorizada está sujeta a acciones legales en la jurisdicción de Chilecito, La Rioja.
+    </div>
+
+</div>
 </div><!-- /main-content -->
 
 <script>
@@ -296,7 +514,7 @@
         t.innerText = titulo;
         t.style.color = '#F43F5E';
         document.getElementById('status-msg').innerHTML =
-            `${msg}<br><br><a href="index.html" style="color:var(--primary);text-decoration:none;font-weight:800;">← Volver al Inicio</a>`;
+            `${msg}<br><br><a href="index.html" style="color:#2DD4BF;text-decoration:none;font-weight:800;">← Volver al Inicio</a>`;
     }
 
     async function validar() {
@@ -304,39 +522,30 @@
             showError("403 — Denegado", "No se detectó un token de seguridad válido.");
             return;
         }
-
         try {
             const response = await fetch(
                 `https://nexofarma.alwaysdata.net/signature/validar-token?token=${token}`
             );
-
             if (response.status === 403) {
                 showError("Acceso Expirado", "Tu token no es válido o ya caducó.<br>Solicitá un nuevo acceso firmando el NDA.");
                 return;
             }
-
             const data = await response.json();
-
             if (data.valid) {
-                // Personalizar UI
                 document.getElementById('user-display').innerText = data.nombre;
                 document.getElementById('watermark-text').innerText =
                     `${data.nombre.toUpperCase()} — NEXOFARMA CONFIDENCIAL`;
-
-                // Cambiar pantallas
                 document.getElementById('status-screen').style.display = 'none';
                 document.getElementById('main-content').style.display = 'block';
 
-                // Cargar Chart.js de forma dinámica (solo si el acceso es válido)
+                // Cargar Chart.js solo si el acceso es válido
                 const script = document.createElement('script');
                 script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
                 script.onload = renderChart;
                 document.head.appendChild(script);
-
             } else {
                 showError("Acceso Denegado", "Las credenciales no son válidas.");
             }
-
         } catch (err) {
             showError("Error de Conexión", "No se pudo contactar al servidor de seguridad.<br>Intentá de nuevo en unos instantes.");
         }
@@ -352,29 +561,20 @@
                     label: 'Transacciones P2P mensuales',
                     data: [500, 3000, 12000, 35000, 70000, 150000],
                     borderColor: '#2DD4BF',
-                    backgroundColor: 'rgba(45, 212, 191, 0.08)',
-                    fill: true,
-                    tension: 0.4,
-                    pointBackgroundColor: '#2DD4BF',
-                    pointRadius: 4
+                    backgroundColor: 'rgba(45,212,191,0.08)',
+                    fill: true, tension: 0.4,
+                    pointBackgroundColor: '#2DD4BF', pointRadius: 4
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
+                responsive: true, maintainAspectRatio: false,
                 plugins: {
-                    legend: {
-                        display: true,
-                        labels: { color: '#94A3B8', font: { size: 12 } }
-                    }
+                    legend: { display: true, labels: { color: '#94A3B8', font: { size: 12 } } }
                 },
                 scales: {
                     y: {
                         grid: { color: 'rgba(255,255,255,0.04)' },
-                        ticks: {
-                            color: '#94A3B8',
-                            callback: val => val.toLocaleString('es-AR')
-                        }
+                        ticks: { color: '#94A3B8', callback: val => val.toLocaleString('es-AR') }
                     },
                     x: {
                         grid: { color: 'rgba(255,255,255,0.04)' },
@@ -388,4 +588,5 @@
     validar();
 </script>
 </body>
-</html>
+    </html>
+                                
