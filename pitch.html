@@ -101,6 +101,9 @@
                 <strong>5. JURISDICCIÓN:</strong> Tribunales de La Rioja, Argentina.
             </div>
 
+            <!-- Campo hidden para mantener consistencia del funnel -->
+            <input type="hidden" id="tipo_lead" value="inversor">
+
             <div class="input-group">
                 <input type="text" id="inv-name" placeholder="Nombre completo del inversor">
             </div>
@@ -143,8 +146,9 @@
 
         btnSubmit.addEventListener('click', async () => {
             const nombre = document.getElementById('inv-name').value;
-            const dni = document.getElementById('inv-dni').value; // CAMBIO: Capturar DNI
+            const dni = document.getElementById('inv-dni').value;
             const email = document.getElementById('inv-email').value;
+            const tipo_lead = document.getElementById('tipo_lead').value; // Capturar el tipo_lead
 
             if (!nombre || !dni || !email || signaturePad.isEmpty()) {
                 alert("Por favor complete su nombre, DNI, email y firme el documento.");
@@ -161,8 +165,9 @@
                     mode: 'cors',
                     body: JSON.stringify({
                         nombre: nombre,
-                        dni: dni, // CAMBIO: Enviar DNI al servidor
+                        dni: dni,
                         email: email,
+                        tipo_lead: tipo_lead, // Enviar tipo_lead al servidor
                         firma: signaturePad.toDataURL()
                     })
                 });
