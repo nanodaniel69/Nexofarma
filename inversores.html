@@ -11,6 +11,9 @@
   <meta property="og:image" content="https://nexofarma.online/mockup.png">
   <meta property="og:url" content="https://nexofarma.online">
 
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -93,7 +96,7 @@
     .card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: 0.3s; }
     .card:hover { border-color: rgba(45,212,191,0.3); transform: translateY(-4px); }
     
-    /* ── ICONOS SVG LUCIDE-STYLE ── */
+    /* ── ICONOS FONT AWESOME ── */
     .icon-container {
       width: 48px;
       height: 48px;
@@ -102,6 +105,15 @@
       align-items: center;
       justify-content: center;
     }
+    
+    .icon-container i {
+      font-size: 2rem;
+      line-height: 1;
+    }
+    
+    .icon-teal { color: #2DD4BF; }
+    .icon-sky { color: #38BDF8; }
+    .icon-violet { color: #818CF8; }
     
     .card-stat { font-size: 2.8rem; font-weight: 800; line-height: 1.1; margin-bottom: 8px; }
 
@@ -178,28 +190,21 @@
     <div class="grid-3">
       <div class="card reveal">
         <div class="icon-container">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6"/>
-          </svg>
+          <i class="fas fa-capsules icon-teal"></i>
         </div>
         <div class="card-stat" style="color:var(--teal);">12%</div>
         <p>De los medicamentos en Argentina <b>termina en la basura</b> sin llegar a quienes los necesitan.</p>
       </div>
       <div class="card reveal">
         <div class="icon-container">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg>
+          <i class="fas fa-map-marker-alt icon-sky"></i>
         </div>
         <div class="card-stat" style="color:var(--sky);">0</div>
         <p>No existe hoy un <b>sistema de trazabilidad</b> para excedentes entre particulares y farmacias.</p>
       </div>
       <div class="card reveal">
         <div class="icon-container">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
-          </svg>
+          <i class="fas fa-chart-bar icon-violet"></i>
         </div>
         <div class="card-stat" style="color:var(--violet);">Dato</div>
         <p>El Estado toma decisiones <b>sin visibilidad real</b> sobre dónde se generan estos excedentes.</p>
