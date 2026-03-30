@@ -69,8 +69,11 @@
     /* ── HERO ── */
     #hero { min-height: 95vh; display: flex; align-items: center; justify-content: center; text-align: center; }
     .hero-eyebrow {
-      display: inline-block; background: rgba(45,212,191,0.08); border: 1px solid rgba(45,212,191,0.2);
+      display: inline-flex; align-items: center; gap: 8px; background: rgba(45,212,191,0.08); border: 1px solid rgba(45,212,191,0.2);
       color: var(--teal); font-size: 0.75rem; font-weight: 600; padding: 6px 16px; border-radius: 100px; margin-bottom: 24px;
+    }
+    .hero-eyebrow i {
+      font-size: 0.9rem;
     }
     .hero-title {
       font-size: clamp(2.4rem, 7vw, 5.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 24px;
@@ -170,7 +173,10 @@
 <section id="hero">
   <div class="wrap">
     <div class="hero-content">
-      <div class="hero-eyebrow">🇦🇷 Pre-Seed 2026 · Argentina</div>
+      <div class="hero-eyebrow">
+        <i class="fas fa-flag"></i>
+        <span>Pre-Seed 2026 · Argentina</span>
+      </div>
       <h1 class="hero-title">Del desperdicio al<br><span class="t-grad">dato estratégico</span></h1>
       <p class="hero-sub">Construimos la primera infraestructura de trazabilidad de excedentes farmacéuticos en Argentina.</p>
       <div class="hero-actions">
@@ -257,7 +263,7 @@
     <div class="form-glass reveal">
       <div id="form-body">
         <div class="nda-badge">
-          <span>🔒</span>
+          <i class="fas fa-lock"></i>
           <p><b>Confidencialidad garantizada.</b> El acceso al Data Room completo requiere firma de NDA.</p>
         </div>
         <form id="contact-form" action="https://nexofarma.alwaysdata.net/email/procesar_lead.php" method="POST">
@@ -268,7 +274,7 @@
         </form>
       </div>
       <div id="form-success" style="display:none; padding: 40px;">
-        <span style="font-size: 3rem;">✅</span>
+        <i class="fas fa-check-circle" style="font-size: 3rem; color: #2DD4BF;"></i>
         <h3 style="margin-top: 20px;">Solicitud recibida</h3>
         <p style="color: var(--dim);">Nos contactaremos en breve.</p>
       </div>
