@@ -98,14 +98,14 @@
     .card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: 0.3s; }
     .card:hover { border-color: rgba(45,212,191,0.3); transform: translateY(-4px); }
     
-    /* ── ICONOS SVG ── */
-    .icon-container {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* ── ICONOS CON FUENTE SYSTEM-UI ── */
+    .card-icon { 
+      font-size: 2.5rem; 
+      margin-bottom: 16px; 
+      display: block; 
+      font-family: system-ui, -apple-system, 'Segoe UI', 'Noto Color Emoji', sans-serif;
+      line-height: 1;
+      text-align: center;
     }
     
     .card-stat { font-size: 2.8rem; font-weight: 800; line-height: 1.1; margin-bottom: 8px; }
@@ -184,32 +184,17 @@
     </div>
     <div class="grid-3">
       <div class="card reveal">
-        <div class="icon-container">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M10.5 19.5L3 12l7.5-7.5M21 12H3"/>
-          </svg>
-        </div>
+        <span class="card-icon">💊</span>
         <div class="card-stat" style="color:var(--teal);">12%</div>
         <p>De los medicamentos en Argentina <b>termina en la basura</b> sin llegar a quienes los necesitan.</p>
       </div>
       <div class="card reveal">
-        <div class="icon-container">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg>
-        </div>
+        <span class="card-icon">📍</span>
         <div class="card-stat" style="color:var(--sky);">0</div>
         <p>No existe hoy un <b>sistema de trazabilidad</b> para excedentes entre particulares y farmacias.</p>
       </div>
       <div class="card reveal">
-        <div class="icon-container">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 20V10"/>
-            <path d="M12 20V4"/>
-            <path d="M6 20v-6"/>
-          </svg>
-        </div>
+        <span class="card-icon">📊</span>
         <div class="card-stat" style="color:var(--violet);">Dato</div>
         <p>El Estado toma decisiones <b>sin visibilidad real</b> sobre dónde se generan estos excedentes.</p>
       </div>
