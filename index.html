@@ -61,7 +61,8 @@
                 <strong>Soy Farmacia / Centro de Salud</strong>
                 <span>Nodo de validación y entrega.</span>
             </button>
-            <button class="btn-perfil inversor-btn" onclick="renderForm('inversor')">
+            
+            <button class="btn-perfil inversor-btn" onclick="window.location.href='inversores.html'">
                 <strong>Acceso Inversores & Partners</strong>
                 <span>Ver Pitch Deck y Data Room (Requiere NDA).</span>
             </button>
@@ -92,6 +93,7 @@
 
 <script>
     function renderForm(tipo) {
+        // Ahora esta función solo se encarga de los 3 perfiles de usuario/validación
         document.getElementById('inicio').style.display = 'none';
         document.getElementById('form-box').style.display = 'block';
         document.getElementById('tipo_lead').value = tipo;
@@ -114,13 +116,10 @@
             title.innerText = 'Alianza Institucional';
             espec.innerHTML = `<label>Ubicación / Barrio</label><input type="text" name="message" required>`;
             btn.innerText = 'Postular mi Farmacia';
-        } else {
-            title.innerText = 'Acceso Inversores';
-            espec.innerHTML = `<label>Institución / Fondo</label><input type="text" name="message" placeholder="Opcional">`;
-            btn.innerText = 'Continuar al Pitch';
         }
     }
 
+    // El resto de la función enviarLead se mantiene igual para procesar los leads de usuarios
     async function enviarLead(event) {
         event.preventDefault();
         const btn = document.getElementById('btn-text');
@@ -140,13 +139,8 @@
             const result = await response.json();
 
             if (result.status === 'success') {
-                if (tipo === 'inversor') {
-                    // REDIRECCIÓN CORRECTA AL FLUJO DE INVERSIÓN
-                    window.location.href = 'inversores.html';
-                } else {
-                    alert('¡Recibido! Te contactaremos pronto.');
-                    location.reload();
-                }
+                alert('¡Recibido! Te contactaremos pronto.');
+                location.reload();
             } else {
                 alert('Error del servidor: ' + result.message);
             }
